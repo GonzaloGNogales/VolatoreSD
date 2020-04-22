@@ -26,7 +26,11 @@ public class Vuelo {
 
 	@ManyToOne
 	@JoinColumn(name = "idAeropuerto")
-	private Aeropuerto aeropuerto;
+	private Aeropuerto aeropuertoOrigen;
+
+	@ManyToOne
+	@JoinColumn(name = "idAeropuerto")
+	private Aeropuerto aeropuertoDestino;
 
 	// Generator Constructors
 
@@ -99,11 +103,20 @@ public class Vuelo {
 		this.empresa = empresa;
 	}
 
-	public Aeropuerto getAeropuerto() {
-		return aeropuerto;
+	public Aeropuerto getAeropuertoOrigen() {
+		return aeropuertoOrigen;
 	}
 
-	public void setAeropuerto(Aeropuerto aeropuerto) {
-		this.aeropuerto = aeropuerto;
+	public void setAeropuertoOrigen(Aeropuerto aeropuerto) {
+		this.aeropuertoOrigen = aeropuerto;
 	}
+
+	public Aeropuerto getAeropuertoDestino() {
+		return aeropuertoDestino;
+	}
+
+	public void setAeropuertoDestino(Aeropuerto aeropuertoDestino) {
+		this.aeropuertoDestino = aeropuertoDestino;
+	}
+
 }

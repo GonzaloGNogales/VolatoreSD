@@ -18,8 +18,11 @@ public class Aeropuerto {
 	private String codigoAeropuerto;
 	private String nombreAeropuerto;
 
-	@OneToMany(mappedBy = "aeropuerto")
-	private List<Vuelo> vuelosAeropuerto; // Vuelos asociados con el aeropuerto
+	@OneToMany(mappedBy = "aeropuertoOrigen")
+	private List<Vuelo> vuelosAeropuertoSalida; // Vuelos asociados con el aeropuerto
+
+	@OneToMany(mappedBy = "aeropuertoDestino")
+	private List<Vuelo> vuelosAeropuertoEntrada; // Vuelos asociados con el aeropuerto
 
 	// Generator Constructors
 
@@ -29,7 +32,8 @@ public class Aeropuerto {
 	public Aeropuerto(String codigo, String nombre) {
 		this.codigoAeropuerto = codigo;
 		this.nombreAeropuerto = nombre;
-		this.vuelosAeropuerto = new ArrayList<>();
+		this.vuelosAeropuertoSalida = new ArrayList<>();
+		this.vuelosAeropuertoEntrada = new ArrayList<>();
 	}
 
 	// Getters and Setters
@@ -58,12 +62,20 @@ public class Aeropuerto {
 		this.nombreAeropuerto = nombreAeropuerto;
 	}
 
-	public List<Vuelo> getVuelos() {
-		return vuelosAeropuerto;
+	public List<Vuelo> getVuelosAeropuertoSalida() {
+		return vuelosAeropuertoSalida;
 	}
 
-	public void setVuelos(List<Vuelo> vuelos) {
-		this.vuelosAeropuerto = vuelos;
+	public void setVuelosAeropuertoSalida(List<Vuelo> vuelosAeropuertoSalida) {
+		this.vuelosAeropuertoSalida = vuelosAeropuertoSalida;
+	}
+
+	public List<Vuelo> getVuelosAeropuertoEntrada() {
+		return vuelosAeropuertoEntrada;
+	}
+
+	public void setVuelosAeropuertoEntrada(List<Vuelo> vuelosAeropuertoEntrada) {
+		this.vuelosAeropuertoEntrada = vuelosAeropuertoEntrada;
 	}
 
 }

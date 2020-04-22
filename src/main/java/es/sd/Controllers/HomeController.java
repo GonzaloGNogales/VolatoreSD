@@ -1,16 +1,18 @@
 package es.sd.Controllers;
 
 import java.sql.Date;
+import java.sql.Time;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import es.sd.Entities.Autor;
+import es.sd.Entities.Aeropuerto;
 import es.sd.Entities.Empresa;
 import es.sd.Entities.Vuelo;
-import es.sd.Repositories.AutorRepository;
+import es.sd.Repositories.AeropuertoRepository;
 import es.sd.Repositories.EmpresaRepository;
 import es.sd.Repositories.VueloRepository;
 
@@ -18,172 +20,171 @@ import es.sd.Repositories.VueloRepository;
 public class HomeController {
 
 	@Autowired
-	private VueloRepository repCuadros;
+	private VueloRepository repVuelos;
 
 	@Autowired
-	private AutorRepository repAutores;
+	private AeropuertoRepository repAeropuertos;
 
 	@Autowired
-	private EmpresaRepository repClientes;
+	private EmpresaRepository repEmpresas;
 
 	// CONSTRUCCIÓN DE LA BASE DE DATOS CON OBJETOS DE ENTIDADES DE EJEMPLO
 
 	@PostConstruct
 	public void construirBD() {
 
-		// AUTORES
+		// AEROPUERTOS
 
-		Autor autor1 = new Autor("José", "Pérez", "22222222J", 1972, "Ecuador", 28221, "joseperez@art.com", 622131522);
-		repAutores.save(autor1);
+		Aeropuerto aeropuerto1 = new Aeropuerto("LEMD", "Madrid (Barajas - Adolfo Suarez)");
+		repAeropuertos.save(aeropuerto1);
 
-		Autor autor2 = new Autor("Antonio", "Fonseca", "94165470C", 1432, "Ecuador", 28300, "antoniofonseca@art.com",
-				690511795);
-		repAutores.save(autor2);
+		Aeropuerto aeropuerto2 = new Aeropuerto("LEZL", "Sevilla");
+		repAeropuertos.save(aeropuerto2);
 
-		Autor autor3 = new Autor("Marta", "Reinoso", "56749823V", 1998, "España", 28047, "martareinoso@art.com",
-				635489821);
-		repAutores.save(autor3);
+		Aeropuerto aeropuerto3 = new Aeropuerto("LHBP", "Budapest");
+		repAeropuertos.save(aeropuerto3);
 
-		Autor autor4 = new Autor("Miguel", "Donallo", "53899823M", 1998, "España", 28915, "migueldonallo@art.com",
-				667349823);
-		repAutores.save(autor4);
+		Aeropuerto aeropuerto4 = new Aeropuerto("LFOB", "Paris (Beauvais)");
+		repAeropuertos.save(aeropuerto4);
 
-		Autor autor5 = new Autor("Holger", "Billhardt", "63859763H", 1960, "Alemania", 28016, "holgerbillhardt@art.com",
-				667935873);
-		repAutores.save(autor5);
+		Aeropuerto aeropuerto5 = new Aeropuerto("LFPO", "Paris (Orly)");
+		repAeropuertos.save(aeropuerto5);
 
-		Autor autor6 = new Autor("Marta", "Ribote", "78666876M", 1998, "España", 28325, "martaribote@art.com",
-				677863159);
-		repAutores.save(autor6);
+		Aeropuerto aeropuerto6 = new Aeropuerto("LECU", "Madrid (Cuatro Vientos)");
+		repAeropuertos.save(aeropuerto6);
 
-		Autor autor7 = new Autor("Robert", "Nolan", "05665892O", 1932, "Irlanda", 28512, "robertnolan@art.com",
-				673493198);
-		repAutores.save(autor7);
-
-		Autor autor8 = new Autor("Teresa", "Iglesias", "98863602B", 1965, "España", 28960, "teresaiglesias@art.com",
-				690511795);
-		repAutores.save(autor8);
-
-		Autor autor9 = new Autor("Pablo", "Villoria", "78554123Q", 1984, "Alemania", 44363, "pablovilloria@art.com",
-				690511795);
-		repAutores.save(autor9);
-
-		Autor autor10 = new Autor("Steve", "Magic", "44852136Y", 1968, "Reino Unido", 33212, "stevemagic@art.com",
-				673493198);
-		repAutores.save(autor10);
+		Aeropuerto aeropuerto7 = new Aeropuerto("LEBL", "Barcelona (El Prat - Josep Tarradellas)");
+		repAeropuertos.save(aeropuerto7);
 
 		// CLIENTES
 
-		Empresa cliente1 = new Empresa("Fernando", "López", "11111111H", 21345, "fernandolopez@gmail.com", 687451227);
-		repClientes.save(cliente1);
+		Empresa empresa1 = new Empresa("NZ", "Air New Zealand", "https://www.airnewzealand.com/", 900993241);
+		repEmpresas.save(empresa1);
 
-		Empresa cliente2 = new Empresa("Rebeca", "Mena", "45197813F", 28225, "rebecamena@gmail.com", 685763703);
-		repClientes.save(cliente2);
+		Empresa empresa2 = new Empresa("AS", "Alaska Airlines", "https://www.alaskaair.com/", 900954724);
+		repEmpresas.save(empresa2);
 
-		Empresa cliente3 = new Empresa("Alba", "Sánchez", "67931583K", 28915, "albasanchez@gmail.com", 686893774);
-		repClientes.save(cliente3);
+		Empresa empresa3 = new Empresa("NH", "All Nippon Airways", "https://www.ana.co.jp/en/eur/", 900653123);
+		repEmpresas.save(empresa3);
 
-		Empresa cliente4 = new Empresa("Julio", "Sanderrubias", "50125362L", 19842, "juliosande@gmail.com", 632789652);
-		repClientes.save(cliente4);
+		Empresa empresa4 = new Empresa("AY", "Finnair", "https://www.finnair.com/", 900456789);
+		repEmpresas.save(empresa4);
+
+		Empresa empresa5 = new Empresa("RJ", "Royal Jordanian Airlines", "https://rj.com/", 900121323);
+		repEmpresas.save(empresa5);
 
 		// CUADROS
 
-		Vuelo cuadro1 = new Vuelo("Visita de la noche", "Bastante desgastado", 2017, 30.52, 26.88, 3000);
-		cuadro1.setAutor(autor1);
-		repCuadros.save(cuadro1);
+		java.sql.Date fecha1 = Date.valueOf(LocalDate.of(2020, 05, 31));
+		java.sql.Time hora1 = Time.valueOf(LocalTime.of(6, 30));
+		Vuelo vuelo1 = new Vuelo("NZ1234", fecha1, hora1, 30, 762); // Tiempo de duracion en minutos
+		vuelo1.setEmpresa(empresa1);
+		vuelo1.setAeropuertoOrigen(aeropuerto1); // Madrid Barajas
+		vuelo1.setAeropuertoDestino(aeropuerto7); // Barcelona
+		repVuelos.save(vuelo1);
 
-		Vuelo cuadro2 = new Vuelo("La Primavera", "Recien restaurado", 1481, 203, 314, 55000);
-		cuadro2.setAutor(autor2);
-		repCuadros.save(cuadro2);
+		java.sql.Time hora2 = Time.valueOf(LocalTime.of(10, 45));
+		Vuelo vuelo2 = new Vuelo("AS2231", fecha1, hora2, 25, 568);
+		vuelo2.setEmpresa(empresa2);
+		vuelo2.setAeropuertoOrigen(aeropuerto1); // Madrid Barajas
+		vuelo2.setAeropuertoDestino(aeropuerto7); // Barcelona
+		repVuelos.save(vuelo2);
 
-		Vuelo cuadro3 = new Vuelo("La Caída del Capital", "En perfecto estado", 2018, 100, 250, 7000);
-		cuadro3.setAutor(autor3);
-		repCuadros.save(cuadro3);
+		java.sql.Time hora3 = Time.valueOf(LocalTime.of(19, 22));
+		Vuelo vuelo3 = new Vuelo("NH4776", fecha1, hora3, 32, 1155);
+		vuelo3.setEmpresa(empresa3);
+		vuelo3.setAeropuertoOrigen(aeropuerto1); // Madrid Barajas
+		vuelo3.setAeropuertoDestino(aeropuerto7); // Barcelona
+		repVuelos.save(vuelo3);
 
-		Vuelo cuadro4 = new Vuelo("Elena", "Algo desgastado", 2017, 31.4, 41.3, 8000);
-		cuadro4.setAutor(autor4);
-		repCuadros.save(cuadro4);
+		java.sql.Date fecha2 = Date.valueOf(LocalDate.of(2020, 07, 12));
+		java.sql.Time hora4 = Time.valueOf(LocalTime.of(6, 50));
+		Vuelo vuelo4 = new Vuelo("NZ6652", fecha2, hora4, 190, 8000);
+		vuelo4.setEmpresa(empresa1);
+		vuelo4.setAeropuertoOrigen(aeropuerto3); // Budapest
+		vuelo4.setAeropuertoDestino(aeropuerto2); // Sevilla
+		repVuelos.save(vuelo4);
 
-		Vuelo cuadro5 = new Vuelo("Los Quien", "En perfecto estado", 2018, 31.4, 41.3, 6000);
-		cuadro5.setAutor(autor4);
-		repCuadros.save(cuadro5);
+		java.sql.Date fecha3 = Date.valueOf(LocalDate.of(2021, 01, 15));
+		java.sql.Time hora5 = Time.valueOf(LocalTime.of(8, 10));
+		Vuelo vuelo5 = new Vuelo("RJ3228", fecha3, hora5, 52, 562);
+		vuelo5.setEmpresa(empresa5);
+		vuelo5.setAeropuertoOrigen(aeropuerto4); // Paris
+		vuelo5.setAeropuertoDestino(aeropuerto6); // Madrid Cuatro Vientos
+		repVuelos.save(vuelo5);
 
-		Vuelo cuadro6 = new Vuelo("Desconocido", "En proceso de restauracion", 1996, 210, 60.5, 5200);
-		cuadro6.setAutor(autor5);
-		repCuadros.save(cuadro6);
+		java.sql.Time hora6 = Time.valueOf(LocalTime.of(17, 30));
+		Vuelo vuelo6 = new Vuelo("AY6778", fecha3, hora6, 35, 1032);
+		vuelo6.setEmpresa(empresa4);
+		vuelo6.setAeropuertoOrigen(aeropuerto7); // Barcelona
+		vuelo6.setAeropuertoDestino(aeropuerto2); // Sevilla
+		repVuelos.save(vuelo6);
 
-		Vuelo cuadro7 = new Vuelo("Vida en Marte", "Recien restaurado", 2016, 50.6, 150, 1200);
-		cuadro7.setAutor(autor5);
-		repCuadros.save(cuadro7);
+		java.sql.Date fecha4 = Date.valueOf(LocalDate.of(2020, 03, 13));
+		java.sql.Time hora7 = Time.valueOf(LocalTime.of(16, 15));
+		Vuelo vuelo7 = new Vuelo("AY8722", fecha4, hora7, 150, 1200);
+		vuelo7.setEmpresa(empresa4);
+		vuelo7.setAeropuertoOrigen(aeropuerto6); // Madrid Cuatro Vientos
+		vuelo7.setAeropuertoDestino(aeropuerto7); // Barcelona
+		repVuelos.save(vuelo7);
 
-		Vuelo cuadro8 = new Vuelo("Autorretrato", "En perfecto estado", 1978, 35.6, 150, 3400);
-		cuadro8.setAutor(autor7);
-		repCuadros.save(cuadro8);
+		java.sql.Date fecha5 = Date.valueOf(LocalDate.of(2020, 02, 24));
+		java.sql.Time hora8 = Time.valueOf(LocalTime.of(8, 30));
+		Vuelo vuelo8 = new Vuelo("NZ4466", fecha5, hora8, 220, 3400);
+		vuelo8.setEmpresa(empresa1);
+		vuelo8.setAeropuertoOrigen(aeropuerto2); // Sevilla
+		vuelo8.setAeropuertoDestino(aeropuerto3); // Budapest
+		repVuelos.save(vuelo8);
 
-		Vuelo cuadro9 = new Vuelo("Realidad Aumentada", "Bordes desgastados", 2002, 14.26, 45.88, 17000);
-		cuadro9.setAutor(autor9);
-		repCuadros.save(cuadro9);
+		// AÑADIR VUELOS A SUS EMPRESAS
 
-		Vuelo cuadro10 = new Vuelo("Poema de primavera", "Marco roto", 1992, 13.17, 6, 8500);
-		cuadro10.setAutor(autor10);
-		repCuadros.save(cuadro10);
+		empresa1.getVuelosEmpresa().add(vuelo1);
+		empresa1.getVuelosEmpresa().add(vuelo4);
+		empresa1.getVuelosEmpresa().add(vuelo8);
+		repEmpresas.save(empresa1);
 
-		// AÑADIR CUADROS A SUS AUTORES
+		empresa2.getVuelosEmpresa().add(vuelo2);
+		repEmpresas.save(empresa2);
 
-		autor1.getCuadrosCreados().add(cuadro1);
-		repAutores.save(autor1);
+		empresa3.getVuelosEmpresa().add(vuelo3);
+		repEmpresas.save(empresa3);
 
-		autor2.getCuadrosCreados().add(cuadro2);
-		repAutores.save(autor2);
+		empresa4.getVuelosEmpresa().add(vuelo6);
+		empresa4.getVuelosEmpresa().add(vuelo7);
+		repEmpresas.save(empresa4);
 
-		autor3.getCuadrosCreados().add(cuadro3);
-		repAutores.save(autor3);
+		empresa5.getVuelosEmpresa().add(vuelo5);
+		repEmpresas.save(empresa5);
 
-		autor4.getCuadrosCreados().add(cuadro4);
-		autor4.getCuadrosCreados().add(cuadro5);
-		repAutores.save(autor4);
+		// AÑADIR VUELOS A SUS AEROPUERTOS
 
-		autor5.getCuadrosCreados().add(cuadro6);
-		autor5.getCuadrosCreados().add(cuadro7);
-		repAutores.save(autor5);
+		aeropuerto1.getVuelosAeropuertoSalida().add(vuelo1);
+		aeropuerto1.getVuelosAeropuertoSalida().add(vuelo2);
+		aeropuerto1.getVuelosAeropuertoSalida().add(vuelo3);
+		repAeropuertos.save(aeropuerto1);
 
-		autor7.getCuadrosCreados().add(cuadro8);
-		repAutores.save(autor7);
+		aeropuerto2.getVuelosAeropuertoSalida().add(vuelo8);
+		aeropuerto2.getVuelosAeropuertoEntrada().add(vuelo4);
+		aeropuerto2.getVuelosAeropuertoEntrada().add(vuelo6);
+		repAeropuertos.save(aeropuerto2);
 
-		autor9.getCuadrosCreados().add(cuadro9);
-		repAutores.save(autor9);
+		aeropuerto3.getVuelosAeropuertoSalida().add(vuelo4);
+		aeropuerto3.getVuelosAeropuertoEntrada().add(vuelo8);
+		repAeropuertos.save(aeropuerto3);
 
-		autor10.getCuadrosCreados().add(cuadro10);
-		repAutores.save(autor10);
+		aeropuerto4.getVuelosAeropuertoSalida().add(vuelo5);
+		repAeropuertos.save(aeropuerto4);
 
-		// COMPRAS
+		aeropuerto6.getVuelosAeropuertoSalida().add(vuelo7);
+		aeropuerto6.getVuelosAeropuertoEntrada().add(vuelo5);
+		repAeropuertos.save(aeropuerto6);
 
-		Date fecha1 = Date.valueOf(LocalDate.of(2020, 01, 12));
-		cuadro1.setFechaVenta(fecha1);
-		cuadro1.setComprador(cliente1);
-		cliente1.getCuadrosComprados().add(cuadro1);
-		repCuadros.save(cuadro1);
-		repClientes.save(cliente1);
-
-		cuadro2.setFechaVenta(fecha1);
-		cuadro2.setComprador(cliente2);
-		cliente2.getCuadrosComprados().add(cuadro2);
-		repCuadros.save(cuadro2);
-		repClientes.save(cliente2);
-
-		Date fecha2 = Date.valueOf(LocalDate.of(2018, 03, 20));
-		cuadro4.setFechaVenta(fecha2);
-		cuadro4.setComprador(cliente3);
-		cliente3.getCuadrosComprados().add(cuadro4);
-		repCuadros.save(cuadro4);
-		repClientes.save(cliente3);
-
-		Date fecha3 = Date.valueOf(LocalDate.of(2019, 05, 11));
-		cuadro5.setFechaVenta(fecha3);
-		cuadro5.setComprador(cliente4);
-		cliente4.getCuadrosComprados().add(cuadro5);
-		repCuadros.save(cuadro5);
-		repClientes.save(cliente4);
+		aeropuerto7.getVuelosAeropuertoSalida().add(vuelo6);
+		aeropuerto7.getVuelosAeropuertoEntrada().add(vuelo1);
+		aeropuerto7.getVuelosAeropuertoEntrada().add(vuelo2);
+		aeropuerto7.getVuelosAeropuertoEntrada().add(vuelo3);
+		aeropuerto7.getVuelosAeropuertoEntrada().add(vuelo7);
+		repAeropuertos.save(aeropuerto7);
 
 	}
 

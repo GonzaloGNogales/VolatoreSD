@@ -7,4 +7,10 @@ public interface AeropuertoRepository extends JpaRepository<Aeropuerto, Long> {
 
 	// Métodos simples de consulta de la base de datos
 
+	Aeropuerto findByIdAeropuerto(long idAeropuerto);
+
+	Aeropuerto findByCodigoAeropuerto(String codigoAeropuerto);
+
+	Aeropuerto findByNombreAeropuerto(String nombreAeropuerto);
+
 }

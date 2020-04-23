@@ -22,7 +22,7 @@ public class Empresa {
 	private int valoracionEmpresa;
 
 	@OneToMany(mappedBy = "empresa")
-	private List<Vuelo> vuelosEmpresa; // Vuelos asociados con el aeropuerto
+	private List<Vuelo> vuelosEmpresa; // Vuelos asociados con la empresa
 
 	// Generator Constructors
 

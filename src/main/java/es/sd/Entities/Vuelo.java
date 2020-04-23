@@ -17,7 +17,7 @@ public class Vuelo {
 	private String codigoVuelo; // Compuesto por el código de la Empresa y 4 dígitos aleatorios ej. IECA2334
 	private java.sql.Date fechaVuelo;
 	private java.sql.Time horaSalidaVuelo;
-	private int duracionVuelo; // Duración del vuelo en horas
+	private int duracionVuelo; // Duración del vuelo en minutos
 	private int precioVuelo; // Precio del vuelo en euros €
 
 	@ManyToOne
@@ -25,11 +25,9 @@ public class Vuelo {
 	private Empresa empresa;
 
 	@ManyToOne
-	@JoinColumn(name = "idAeropuerto")
 	private Aeropuerto aeropuertoOrigen;
 
 	@ManyToOne
-	@JoinColumn(name = "idAeropuerto")
 	private Aeropuerto aeropuertoDestino;
 
 	// Generator Constructors

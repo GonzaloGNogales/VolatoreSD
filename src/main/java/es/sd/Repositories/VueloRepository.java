@@ -22,6 +22,10 @@ public interface VueloRepository extends JpaRepository<Vuelo, Long> {
 
 	List<Vuelo> findByEmpresa(Empresa empresa);
 
-	List<Vuelo> findByAeropuerto(Aeropuerto aeropuerto);
+	// Método para obtener todos los vuelos desde un aeropuerto origen hasta un
+	// determinado aeropuerto destino un dia concreto
+
+	List<Vuelo> findByAeropuertoOrigenAndAeropuertoDestinoAndFechaVuelo(Aeropuerto aeropuertoOrigen,
+			Aeropuerto aeropuertoDestino, java.sql.Date fechaVuelo);
 
 }

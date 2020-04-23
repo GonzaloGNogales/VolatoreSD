@@ -56,7 +56,7 @@ public class HomeController {
 		Aeropuerto aeropuerto7 = new Aeropuerto("LEBL", "Barcelona (El Prat - Josep Tarradellas)");
 		repAeropuertos.save(aeropuerto7);
 
-		// CLIENTES
+		// EMPRESAS
 
 		Empresa empresa1 = new Empresa("NZ", "Air New Zealand", "https://www.airnewzealand.com/", 900993241);
 		repEmpresas.save(empresa1);
@@ -73,7 +73,7 @@ public class HomeController {
 		Empresa empresa5 = new Empresa("RJ", "Royal Jordanian Airlines", "https://rj.com/", 900121323);
 		repEmpresas.save(empresa5);
 
-		// CUADROS
+		// VUELOS
 
 		java.sql.Date fecha1 = Date.valueOf(LocalDate.of(2020, 05, 31));
 		java.sql.Time hora1 = Time.valueOf(LocalTime.of(6, 30));

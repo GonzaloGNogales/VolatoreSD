@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Empresa {
@@ -22,6 +23,7 @@ public class Empresa {
 	private int valoracionEmpresa;
 
 	@OneToMany(mappedBy = "empresa")
+	@JsonIgnore
 	private List<Vuelo> vuelosEmpresa; // Vuelos asociados con la empresa
 
 	// Generator Constructors

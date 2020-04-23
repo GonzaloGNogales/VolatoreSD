@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Aeropuerto {
@@ -19,9 +20,11 @@ public class Aeropuerto {
 	private String nombreAeropuerto;
 
 	@OneToMany(mappedBy = "aeropuertoOrigen")
+	@JsonIgnore
 	private List<Vuelo> vuelosAeropuertoSalida; // Vuelos asociados con el aeropuerto
 
 	@OneToMany(mappedBy = "aeropuertoDestino")
+	@JsonIgnore
 	private List<Vuelo> vuelosAeropuertoEntrada; // Vuelos asociados con el aeropuerto
 
 	// Generator Constructors

@@ -1,40 +1,31 @@
-$(document).ready.(function() {
-	
-	$.ajax({
-		url: "http://127.0.0.1:8080/aeropuertos/"
-	}).done(function(data) {
-		for (var i = 0; i < data.items.length; ++i) {
-			$("#origen").append(data.items[i].nombreAeropuerto)
+$(document).ready(function() {
+	$("#datepickerIda").datetimepicker({
+		format : 'DD/MM/YYYY HH:mm',
+		icons : {
+			time : "fa fa-clock-o",
+			date : "fa fa-calendar",
+			up : "fa fa-chevron-up",
+			down : "fa fa-chevron-down",
+			previous : 'fa fa-chevron-left',
+			next : 'fa fa-chevron-right',
+			today : 'fa fa-screenshot',
+			clear : 'fa fa-trash',
+			close : 'fa fa-remove'
 		}
-	}).fail(function(data) {
-		// cositas
-	});
-	
-	$.ajax({
-		url: "http://127.0.0.1:8080/aeropuertos/"
-	}).done(function(data) {
-		for (var i = 0; i < data.items.length; ++i) {
-			$("#origen").append(data.items[i].nombreAeropuerto)
+	}).datetimepicker();
+
+	$("#datepickerVuelta").datetimepicker({
+		format : 'DD/MM/YYYY HH:mm',
+		icons : {
+			time : "fa fa-clock-o",
+			date : "fa fa-calendar",
+			up : "fa fa-chevron-up",
+			down : "fa fa-chevron-down",
+			previous : 'fa fa-chevron-left',
+			next : 'fa fa-chevron-right',
+			today : 'fa fa-screenshot',
+			clear : 'fa fa-trash',
+			close : 'fa fa-remove'
 		}
-	}).fail(function(data) {
-		// cositas
-	});
-	
-	$.ajax({
-		url: "http://127.0.0.1:8080/aeropuertos/"
-	}).done(function(data) {
-		for (var i = 0; i < data.items.length; ++i) {
-			$("#origen").append(data.items[i].nombreAeropuerto)
-		}
-	}).fail(function(data) {
-		// cositas
-	});
-	
+	}).datetimepicker();
 });
-
-
-$(botonsito).onClick.function() {
-	
-}
-
-

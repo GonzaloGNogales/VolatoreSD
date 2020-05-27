@@ -136,56 +136,6 @@ public class HomeController {
 		vuelo8.setAeropuertoDestino(aeropuerto3); // Budapest
 		repVuelos.save(vuelo8);
 
-		// AÑADIR VUELOS A SUS EMPRESAS
-
-		empresa1.getVuelosEmpresa().add(vuelo1);
-		empresa1.getVuelosEmpresa().add(vuelo4);
-		empresa1.getVuelosEmpresa().add(vuelo8);
-		repEmpresas.save(empresa1);
-
-		empresa2.getVuelosEmpresa().add(vuelo2);
-		repEmpresas.save(empresa2);
-
-		empresa3.getVuelosEmpresa().add(vuelo3);
-		repEmpresas.save(empresa3);
-
-		empresa4.getVuelosEmpresa().add(vuelo6);
-		empresa4.getVuelosEmpresa().add(vuelo7);
-		repEmpresas.save(empresa4);
-
-		empresa5.getVuelosEmpresa().add(vuelo5);
-		repEmpresas.save(empresa5);
-
-		// AÑADIR VUELOS A SUS AEROPUERTOS
-
-		aeropuerto1.getVuelosAeropuertoSalida().add(vuelo1);
-		aeropuerto1.getVuelosAeropuertoSalida().add(vuelo2);
-		aeropuerto1.getVuelosAeropuertoSalida().add(vuelo3);
-		repAeropuertos.save(aeropuerto1);
-
-		aeropuerto2.getVuelosAeropuertoSalida().add(vuelo8);
-		aeropuerto2.getVuelosAeropuertoEntrada().add(vuelo4);
-		aeropuerto2.getVuelosAeropuertoEntrada().add(vuelo6);
-		repAeropuertos.save(aeropuerto2);
-
-		aeropuerto3.getVuelosAeropuertoSalida().add(vuelo4);
-		aeropuerto3.getVuelosAeropuertoEntrada().add(vuelo8);
-		repAeropuertos.save(aeropuerto3);
-
-		aeropuerto4.getVuelosAeropuertoSalida().add(vuelo5);
-		repAeropuertos.save(aeropuerto4);
-
-		aeropuerto6.getVuelosAeropuertoSalida().add(vuelo7);
-		aeropuerto6.getVuelosAeropuertoEntrada().add(vuelo5);
-		repAeropuertos.save(aeropuerto6);
-
-		aeropuerto7.getVuelosAeropuertoSalida().add(vuelo6);
-		aeropuerto7.getVuelosAeropuertoEntrada().add(vuelo1);
-		aeropuerto7.getVuelosAeropuertoEntrada().add(vuelo2);
-		aeropuerto7.getVuelosAeropuertoEntrada().add(vuelo3);
-		aeropuerto7.getVuelosAeropuertoEntrada().add(vuelo7);
-		repAeropuertos.save(aeropuerto7);
-
 	}
 
 	// MAPEO DEL INICIO DE LA APLICACIÓN

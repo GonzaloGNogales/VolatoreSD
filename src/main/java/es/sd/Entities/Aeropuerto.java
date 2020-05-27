@@ -1,13 +1,9 @@
 package es.sd.Entities;
 
-import java.util.ArrayList;
-import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Aeropuerto {
@@ -19,14 +15,6 @@ public class Aeropuerto {
 	private String codigoAeropuerto;
 	private String nombreAeropuerto;
 
-	@OneToMany(mappedBy = "aeropuertoOrigen")
-	@JsonIgnore
-	private List<Vuelo> vuelosAeropuertoSalida; // Vuelos asociados con el aeropuerto
-
-	@OneToMany(mappedBy = "aeropuertoDestino")
-	@JsonIgnore
-	private List<Vuelo> vuelosAeropuertoEntrada; // Vuelos asociados con el aeropuerto
-
 	// Generator Constructors
 
 	public Aeropuerto() {
@@ -35,8 +23,6 @@ public class Aeropuerto {
 	public Aeropuerto(String codigo, String nombre) {
 		this.codigoAeropuerto = codigo;
 		this.nombreAeropuerto = nombre;
-		this.vuelosAeropuertoSalida = new ArrayList<>();
-		this.vuelosAeropuertoEntrada = new ArrayList<>();
 	}
 
 	// Getters and Setters
@@ -63,22 +49,6 @@ public class Aeropuerto {
 
 	public void setNombreAeropuerto(String nombreAeropuerto) {
 		this.nombreAeropuerto = nombreAeropuerto;
-	}
-
-	public List<Vuelo> getVuelosAeropuertoSalida() {
-		return vuelosAeropuertoSalida;
-	}
-
-	public void setVuelosAeropuertoSalida(List<Vuelo> vuelosAeropuertoSalida) {
-		this.vuelosAeropuertoSalida = vuelosAeropuertoSalida;
-	}
-
-	public List<Vuelo> getVuelosAeropuertoEntrada() {
-		return vuelosAeropuertoEntrada;
-	}
-
-	public void setVuelosAeropuertoEntrada(List<Vuelo> vuelosAeropuertoEntrada) {
-		this.vuelosAeropuertoEntrada = vuelosAeropuertoEntrada;
 	}
 
 }

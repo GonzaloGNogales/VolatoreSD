@@ -1,13 +1,9 @@
 package es.sd.Entities;
 
-import java.util.ArrayList;
-import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Empresa {
@@ -22,10 +18,6 @@ public class Empresa {
 	private int telefonoEmpresa;
 	private int valoracionEmpresa;
 
-	@OneToMany(mappedBy = "empresa")
-	@JsonIgnore
-	private List<Vuelo> vuelosEmpresa; // Vuelos asociados con la empresa
-
 	// Generator Constructors
 
 	public Empresa() {
@@ -37,7 +29,6 @@ public class Empresa {
 		this.webEmpresa = web;
 		this.telefonoEmpresa = telefono;
 		this.valoracionEmpresa = 0; // Valoración inicial de 0 porque nadie ha valorado
-		this.vuelosEmpresa = new ArrayList<>();
 	}
 
 	// Getters and Setters
@@ -88,14 +79,6 @@ public class Empresa {
 
 	public void setValoracionEmpresa(int valoracionEmpresa) {
 		this.valoracionEmpresa = valoracionEmpresa;
-	}
-
-	public List<Vuelo> getVuelosEmpresa() {
-		return vuelosEmpresa;
-	}
-
-	public void setVuelosEmpresa(List<Vuelo> vuelosEmpresa) {
-		this.vuelosEmpresa = vuelosEmpresa;
 	}
 
 }

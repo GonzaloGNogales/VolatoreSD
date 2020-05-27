@@ -1,13 +1,20 @@
 $(document).ready(function() {
+	var fecha1 = new Date();
+	var fecha2 = new Date(Date.now() + 12096e5);
+	var fechaIda = fecha1.toLocaleDateString() + fecha1.getHours() + ":" + fecha1.getMinutes();
+	var fechaVuelta = fecha2.toLocaleDateString() + fecha2.getHours() + ":" + fecha2.getMinutes();
+	
 	$("#datepickerIda").width("115px");
 	$("#datepickerVuelta").width("115px");
+	$("#datepickerIda").val(fechaIda);
+	$("#datepickerVuelta").val(fechaVuelta);
 	
 	if ($("input[name=botonTipoVuelo]:checked").val() == "ida") {
 		$("#datepickerVuelta").hide();
 		$("#labelvuelta").hide();
 	} else if ($("input[name=botonTipoVuelo]:checked").val() == "idayvuelta") {
-		$("#datepickerVuelta").show();
-		$("#labelvuelta").show();
+		$("#datepickerVuelta").fadeIn(1500);
+		$("#labelvuelta").fadeIn(1500);
 	}
 	
 	$("#datepickerIda").datetimepicker({
@@ -45,8 +52,8 @@ $(document).ready(function() {
 			$("#datepickerVuelta").hide();
 			$("#labelvuelta").hide();
 		} else if ($("input[name=botonTipoVuelo]:checked").val() == "idayvuelta") {
-			$("#datepickerVuelta").show();
-			$("#labelvuelta").show();
+			$("#datepickerVuelta").fadeIn(1500);
+			$("#labelvuelta").fadeIn(1500);
 		}
 	});
 });

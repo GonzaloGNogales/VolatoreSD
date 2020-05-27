@@ -24,18 +24,14 @@ public class VuelosRestController {
 	@Autowired
 	private AeropuertoRepository repAeropuertos;
 
-	@RequestMapping(value = "/", method = RequestMethod.GET) // Peticion HTTP GET para obtener todos los vuelos
-	public Collection<Vuelo> getAeropuertos() {
-		return repVuelos.findAll();
-	}
+	@RequestMapping(value = "/{origen}/{destino}/{fecha}", method = RequestMethod.GET) // Método GET para vuelos concretos
+	public ResponseEntity<Collection<Vuelo>> getVuelosDeterminados(@PathVariable(value = "origen") String nombreOrigen,
+			@PathVariable(value = "destino") String nombreDestino, @PathVariable(value = "fecha") String fechaVuelo) {
 
-	@RequestMapping(value = "/{origen}/{destino}/{fecha}", method = RequestMethod.GET) // Petición concreta
-	public ResponseEntity<Collection<Vuelo>> getVuelosDeterminados(@PathVariable(value = "origen") String codigoOrigen,
-			@PathVariable(value = "destino") String codigoDestino, @PathVariable(value = "fecha") String fechaVuelo) {
-
-		Aeropuerto aOrigen = repAeropuertos.findByCodigoAeropuerto(codigoOrigen);
-		Aeropuerto aDestino = repAeropuertos.findByCodigoAeropuerto(codigoDestino);
+		Aeropuerto aOrigen = repAeropuertos.findByNombreAeropuerto(nombreOrigen);
+		Aeropuerto aDestino = repAeropuertos.findByNombreAeropuerto(nombreDestino);
 		java.sql.Date fecha = Date.valueOf(fechaVuelo);
+		System.out.println(fecha.toString());
 
 		Collection<Vuelo> vuelosDisponibles = repVuelos.findByAeropuertoOrigenAndAeropuertoDestinoAndFechaVuelo(aOrigen,
 				aDestino, fecha);

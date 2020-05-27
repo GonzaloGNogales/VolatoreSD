@@ -27,6 +27,7 @@ $(document).ready(function() {
 		var origen = $("#aeropuertoOrigen").val();
 		var destino = $("#aeropuertoDestino").val();
 		var fechaIda = $("#datepickerIda").val();
+		alert(origen + " " + destino + " " + fechaIda);
 		
 		if($('#botonI').is(':checked')) { // Se revisan los botones de solo ida o de ida y vuelta para realizar las peticiones al servidor
 			if (origen.length != 0 && destino.length != 0 && fechaIda.length != 0) {

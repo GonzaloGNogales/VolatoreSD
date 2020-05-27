@@ -9,6 +9,7 @@ $(document).ready(function() {
 	$("#datepickerIda").val(fechaIda);
 	$("#datepickerVuelta").val(fechaVuelta);
 	
+	// Al iniciar la SPA se revisa el botón marcado para preparar la visibilidad
 	if ($("input[name=botonTipoVuelo]:checked").val() == "ida") {
 		$("#datepickerVuelta").hide();
 		$("#labelvuelta").hide();
@@ -17,6 +18,7 @@ $(document).ready(function() {
 		$("#labelvuelta").fadeIn(1500);
 	}
 	
+	// Configuración del datepicker de Material-Kit
 	$("#datepickerIda").datetimepicker({
 		format : 'DD/MM/YYYY HH:mm',
 		icons : {
@@ -47,6 +49,7 @@ $(document).ready(function() {
 		}
 	}).datetimepicker();
 	
+	// Cambio de visibilidad de elementos según el botón que se marque (ida o ida y vuelta)
 	$("input[name=botonTipoVuelo]:radio").click(function() {
 		if ($("input[name=botonTipoVuelo]:checked").val() == "ida") {
 			$("#datepickerVuelta").hide();

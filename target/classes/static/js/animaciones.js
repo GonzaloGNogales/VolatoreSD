@@ -1,4 +1,5 @@
 $(function() {
+	// Animaciones de inicio de la SPA
 	$("#logo").slideDown(2000);
 	$("#buscador").slideDown(1500);
 	

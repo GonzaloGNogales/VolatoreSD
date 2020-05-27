@@ -1,6 +1,7 @@
 package es.sd.RestControllers;
 
 import java.sql.Date;
+import java.sql.Time;
 import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -24,17 +25,24 @@ public class VuelosRestController {
 	@Autowired
 	private AeropuertoRepository repAeropuertos;
 
-	@RequestMapping(value = "/{origen}/{destino}/{fecha}", method = RequestMethod.GET) // Método GET para vuelos concretos
+	@RequestMapping(value = "/{origen}/{destino}/{fecha}", method = RequestMethod.GET) // Método GET para vuelos
+																						// concretos
 	public ResponseEntity<Collection<Vuelo>> getVuelosDeterminados(@PathVariable(value = "origen") String nombreOrigen,
 			@PathVariable(value = "destino") String nombreDestino, @PathVariable(value = "fecha") String fechaVuelo) {
 
 		Aeropuerto aOrigen = repAeropuertos.findByNombreAeropuerto(nombreOrigen);
 		Aeropuerto aDestino = repAeropuertos.findByNombreAeropuerto(nombreDestino);
-		java.sql.Date fecha = Date.valueOf(fechaVuelo);
-		System.out.println(fecha.toString());
 
-		Collection<Vuelo> vuelosDisponibles = repVuelos.findByAeropuertoOrigenAndAeropuertoDestinoAndFechaVuelo(aOrigen,
-				aDestino, fecha);
+		String[] partesFecha = fechaVuelo.split("\\s+");
+		String fecha = partesFecha[0];
+		String hora = partesFecha[1];
+
+		java.sql.Date fechaV = Date.valueOf(fecha);
+		java.sql.Time horaV = Time.valueOf(hora + ":00");
+
+		Collection<Vuelo> vuelosDisponibles = repVuelos
+				.findByAeropuertoOrigenAndAeropuertoDestinoAndFechaVueloAndHoraSalidaVuelo(aOrigen, aDestino, fechaV,
+						horaV);
 
 		if (!vuelosDisponibles.isEmpty())
 			return new ResponseEntity<>(vuelosDisponibles, HttpStatus.OK);

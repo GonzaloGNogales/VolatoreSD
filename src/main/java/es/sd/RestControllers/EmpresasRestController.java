@@ -1,6 +1,5 @@
 package es.sd.RestControllers;
 
-import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,12 +17,8 @@ public class EmpresasRestController {
 	@Autowired
 	private EmpresaRepository repEmpresas;
 
-	@RequestMapping(value = "/", method = RequestMethod.GET) // Peticion HTTP GET para obtener todas las empresas
-	public Collection<Empresa> getEmpresas() {
-		return repEmpresas.findAll();
-	}
-
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET) // Petición para obtener la información de uno concreto
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET) // Petición para obtener la información de una empresa
+																	// en concreto
 	public ResponseEntity<Empresa> getEmpresa(@PathVariable(value = "id") long idEmpresa) {
 
 		Empresa empresa = repEmpresas.findByIdEmpresa(idEmpresa);

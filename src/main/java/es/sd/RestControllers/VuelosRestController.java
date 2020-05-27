@@ -24,22 +24,6 @@ public class VuelosRestController {
 	@Autowired
 	private AeropuertoRepository repAeropuertos;
 
-	@RequestMapping(value = "/", method = RequestMethod.GET) // Peticion HTTP GET para obtener todos los vuelos
-	public Collection<Vuelo> getVuelos() {
-		return repVuelos.findAll();
-	}
-
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET) // Petición para obtener la información de uno concreto
-	public ResponseEntity<Vuelo> getVuelo(@PathVariable(value = "id") long idVuelo) {
-
-		Vuelo vuelo = repVuelos.findByIdVuelo(idVuelo);
-
-		if (vuelo != null)
-			return new ResponseEntity<>(vuelo, HttpStatus.OK);
-		else
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-	}
-
 	@RequestMapping(value = "/{origen}/{destino}/{fecha}", method = RequestMethod.GET) // Petición concreta
 	public ResponseEntity<Collection<Vuelo>> getVuelosDeterminados(@PathVariable(value = "origen") String codigoOrigen,
 			@PathVariable(value = "destino") String codigoDestino, @PathVariable(value = "fecha") String fechaVuelo) {

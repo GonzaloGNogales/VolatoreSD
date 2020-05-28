@@ -1,11 +1,11 @@
 $(document).ready(function() {
 	var fecha1 = new Date();
 	var fecha2 = new Date(Date.now() + 12096e5);
-	var fechaIda = fecha1.toLocaleDateString() + fecha1.getHours() + ":" + fecha1.getMinutes();
-	var fechaVuelta = fecha2.toLocaleDateString() + fecha2.getHours() + ":" + fecha2.getMinutes();
+	var fechaIda = fecha1.toLocaleDateString();
+	var fechaVuelta = fecha2.toLocaleDateString();
 	
-	$("#datepickerIda").width("115px");
-	$("#datepickerVuelta").width("115px");
+	$("#datepickerIda").width("75px");
+	$("#datepickerVuelta").width("75px");
 	$("#datepickerIda").val(fechaIda);
 	$("#datepickerVuelta").val(fechaVuelta);
 	
@@ -20,9 +20,8 @@ $(document).ready(function() {
 	
 	// Configuración del datepicker de Material-Kit
 	$("#datepickerIda").datetimepicker({
-		format : 'DD/MM/YYYY HH:mm',
+		format : 'DD/MM/YYYY',
 		icons : {
-			time : "fa fa-clock-o",
 			date : "fa fa-calendar",
 			up : "fa fa-chevron-up",
 			down : "fa fa-chevron-down",
@@ -35,9 +34,8 @@ $(document).ready(function() {
 	}).datetimepicker();
 	
 	$("#datepickerVuelta").datetimepicker({
-		format : 'DD/MM/YYYY HH:mm',
+		format : 'DD/MM/YYYY',
 		icons : {
-			time : "fa fa-clock-o",
 			date : "fa fa-calendar",
 			up : "fa fa-chevron-up",
 			down : "fa fa-chevron-down",

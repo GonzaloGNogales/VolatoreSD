@@ -26,10 +26,11 @@ $(document).ready(function() {
 		// Se recogen los valores de los campos del formulario
 		var origen = $("#aeropuertoOrigen").val();
 		var destino = $("#aeropuertoDestino").val();
-		var fechaIda = $("#datepickerIda").val();
-		alert(origen + " " + destino + " " + fechaIda);
+		var fechaIdaRaw = $("#datepickerIda").val();
+		var fechaIda = fechaIdaRaw.split("/").reverse().join("-");
 		
-		if($('#botonI').is(':checked')) { // Se revisan los botones de solo ida o de ida y vuelta para realizar las peticiones al servidor
+		if($('#botonI').is(':checked')) {
+			// Se revisan los botones de solo ida o de ida y vuelta para realizar las peticiones al servidor
 			if (origen.length != 0 && destino.length != 0 && fechaIda.length != 0) {
 				$.ajax({
 					url : "http://localhost:8080/vuelos/" + origen + "/" + destino + "/" + fechaIda
@@ -45,34 +46,35 @@ $(document).ready(function() {
 				alert("No se ha realizado la búsqueda porque algún campo estaba vacío.");
 			}
 		} else {
-			var fechaVuelta = $("#datepickerVuelta").val();
+			var fechaVueltaRaw = $("#datepickerVuelta").val();
+			var fechaVuelta = fechaVueltaRaw.split("/").reverse().join("-");
 			
 			if (origen.length != 0 && destino.length != 0 && fechaIda.length != 0 && fechaVuelta.length != 0) {
+				// Se realizan 2 peticiones asíncronas al servidor para recoger todos los vuelos de ida y vuelta
 				$.ajax({
 					url : "http://localhost:8080/vuelos/" + origen + "/" + destino + "/" + fechaIda
 				}).done(function(dataI) {
 					for (var i = 0; i < dataI.length; i++) {
 						vuelosIda[i] = dataI[i].codigoVuelo;
 					}
-					alert("Se han encontrado los vuelos");
-				}).fail(function() {
-					alert("No se han encontrado vuelos de salida disponibles para los datos introducidos.");
-				});
-				
-				if (vuelosIda.length != 0) { // Si no se han encontrado vuelos de ida coincidentes no se buscan vuelos de vuelta
+					alert("Se han encontrado los vuelos de salida.");
+					
+					// Segunda petición ajax anidada dentro de la primera al obtener los datos correctamente
 					$.ajax({
 						url : "http://localhost:8080/vuelos/" + destino + "/" + origen + "/" + fechaVuelta
 					}).done(function(dataV) {
 						for (var i = 0; i < dataV.length; i++) {
 							vuelosVuelta[i] = dataV[i].codigoVuelo;
 						}
-						alert("Se han encontrado los vuelos");
+						alert("Se han encontrado los vuelos de vuelta.");
+						// MOSTRAR LA VENTANA MODAL
 					}).fail(function() {
 						alert("No se han encontrado vuelos de vuelta disponibles para los datos introducidos.");
+						// NO MOSTRAR LA VENTANA MODAL
 					});
-				} else {
-					// NO MOSTRAR LA VENTANA MODAL
-				}
+				}).fail(function() {
+					alert("No se han encontrado vuelos de salida disponibles para los datos introducidos.");
+				});
 			} else {
 				alert("No se ha podido encontrar ningun vuelo porque algun campo no estaba relleno.");
 			}

@@ -136,6 +136,14 @@ public class HomeController {
 		vuelo8.setAeropuertoDestino(aeropuerto3); // Budapest
 		repVuelos.save(vuelo8);
 
+		java.sql.Date fecha6 = Date.valueOf(LocalDate.of(2020, 06, 14));
+		java.sql.Time hora9 = Time.valueOf(LocalTime.of(8, 30));
+		Vuelo vuelo9 = new Vuelo("ZN3322", fecha6, hora9, 30, 532); // Tiempo de duracion en minutos
+		vuelo9.setEmpresa(empresa1);
+		vuelo9.setAeropuertoOrigen(aeropuerto7); // Barcelona
+		vuelo9.setAeropuertoDestino(aeropuerto1); // Madrid Barajas
+		repVuelos.save(vuelo9);
+
 	}
 
 	// MAPEO DEL INICIO DE LA APLICACIÓN

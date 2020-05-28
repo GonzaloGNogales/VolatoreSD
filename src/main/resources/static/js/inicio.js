@@ -4,8 +4,6 @@ $(document).ready(function() {
 	var fechaIda = fecha1.toLocaleDateString();
 	var fechaVuelta = fecha2.toLocaleDateString();
 	
-	$("#datepickerIda").width("75px");
-	$("#datepickerVuelta").width("75px");
 	$("#datepickerIda").val(fechaIda);
 	$("#datepickerVuelta").val(fechaVuelta);
 	

@@ -17,6 +17,24 @@
 	display: none;
 }
 
+#datepickerIda {
+	width: 77px;
+	margin-left: 10px;
+}
+
+#datepickerVuelta {
+	width: 77px;
+	margin-left: 10px;
+}
+
+.date1 {
+	margin-left: 6px;
+}
+
+.date2 {
+	margin-left: 7px;
+}
+
 .carousel.carousel-full-navigation .left {
 	cursor: url("../../img/arrow-left.png"), url("../../img/arrow-left.cur"),
 		default !important;

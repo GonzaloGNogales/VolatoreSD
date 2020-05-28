@@ -57,4 +57,13 @@ $(document).ready(function() {
 			$("#labelvuelta").fadeIn(1500);
 		}
 	});
+	
+	// Funciones para borrar los datos de la ventana de resultado de búsqueda de los vuelos
+	$("#botonClear1").click(function() {
+		$("#bodyModal").empty();
+	});
+	
+	$("#botonClear2").click(function() {
+		$("#bodyModal").empty();
+	});
 });

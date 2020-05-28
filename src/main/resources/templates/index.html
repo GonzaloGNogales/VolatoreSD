@@ -131,12 +131,46 @@
 							</div>
 
 							<div class="footer text-center">
-								<a id="buscar" class="btn btn-primary btn-link btn-wd btn-lg">Buscar
+								<a id="buscar" class="btn btn-primary btn-link btn-wd btn-lg"
+									data-toggle="modal" data-target="#modalVuelos">Buscar
 									Vuelos</a>
 							</div>
 
 						</div>
 
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
+		<!-- Modal -->
+		<div class="modal fade" id="modalVuelos" tabindex="-1" role="dialog"
+			aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+
+			<div class="modal-dialog modal-dialog-centered" role="document">
+
+				<div class="modal-content">
+
+					<div class="modal-header">
+
+						<h5 class="modal-title" id="tituloModal">Vuelos Encontrados</h5>
+						<button type="button" id="botonClear1" class="close"
+							data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+
+					</div>
+
+					<hr>
+
+					<div id="bodyModal" class="modal-body text-center"></div>
+					
+					<div class="modal-footer">
+						<button type="button" id="botonClear2" class="btn btn-primary"
+							data-dismiss="modal">Aceptar</button>
 					</div>
 
 				</div>

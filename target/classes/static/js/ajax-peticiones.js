@@ -38,12 +38,12 @@ $(document).ready(function() {
 					for (var i = 0; i < data.length; i++) {
 						vuelosIda[i] = data[i].codigoVuelo;
 					}
-					alert("Se han encontrado los vuelos.");
+					$("<p>" + "Se han encontrado los vuelos." + "</p>").appendTo('#bodyModal');
 				}).fail(function() {
-					alert("No se han encontrado vuelos disponibles para los datos introducidos.");
+					$("<p>" + "No se han encontrado vuelos disponibles para los datos introducidos." + "</p>").appendTo('#bodyModal');
 				});
 			} else {
-				alert("No se ha realizado la búsqueda porque algún campo estaba vacío.");
+				$("<p>" + "No se ha realizado la búsqueda porque algún campo estaba vacío." + "</p>").appendTo('#bodyModal');
 			}
 		} else {
 			var fechaVueltaRaw = $("#datepickerVuelta").val();
@@ -57,7 +57,6 @@ $(document).ready(function() {
 					for (var i = 0; i < dataI.length; i++) {
 						vuelosIda[i] = dataI[i].codigoVuelo;
 					}
-					alert("Se han encontrado los vuelos de salida.");
 					
 					// Segunda petición ajax anidada dentro de la primera al obtener los datos correctamente
 					$.ajax({
@@ -66,17 +65,16 @@ $(document).ready(function() {
 						for (var i = 0; i < dataV.length; i++) {
 							vuelosVuelta[i] = dataV[i].codigoVuelo;
 						}
-						alert("Se han encontrado los vuelos de vuelta.");
-						// MOSTRAR LA VENTANA MODAL
+						$("<p>" + "Se han encontrado los vuelos." + "</p>").appendTo('#bodyModal');
 					}).fail(function() {
-						alert("No se han encontrado vuelos de vuelta disponibles para los datos introducidos.");
-						// NO MOSTRAR LA VENTANA MODAL
+						$("<p>" + "No se han encontrado vuelos de vuelta disponibles para los datos introducidos." + "</p>").appendTo('#bodyModal');
 					});
+					
 				}).fail(function() {
-					alert("No se han encontrado vuelos de salida disponibles para los datos introducidos.");
+					$("<p>" + "No se han encontrado vuelos de salida disponibles para los datos introducidos." + "</p>").appendTo('#bodyModal');
 				});
 			} else {
-				alert("No se ha podido encontrar ningun vuelo porque algun campo no estaba relleno.");
+				$("<p>" + "No se ha podido encontrar ningun vuelo porque algun campo no estaba relleno." + "</p>").appendTo('#bodyModal');
 			}
 		}
 	});

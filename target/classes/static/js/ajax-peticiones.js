@@ -35,14 +35,34 @@ $(document).ready(function() {
 				$.ajax({
 					url : "http://localhost:8080/vuelos/" + origen + "/" + destino + "/" + fechaIda
 				}).done(function(data) {
+					$("#bodyModal").addClass("modalB");
+					$("<table id=\"myTable\" class=\"table table-striped\">" +
+							"<thead class=\"thead-light\">" +
+								"<tr>" +
+							    	"<th scope=\"col\">Código</th>" +
+							    	"<th scope=\"col\">Fecha</th>" +
+							    	"<th scope=\"col\">Duración</th>" +
+							    	"<th scope=\"col\">Empresa</th>" +
+							    	"<th scope=\"col\">Precio</th>" +
+							    "</tr>" +
+							"</thead>" +
+							"<tbody>").appendTo('#bodyModal');
 					for (var i = 0; i < data.length; i++) {
-						vuelosIda[i] = data[i].codigoVuelo;
+						$("<tr>" +
+						      "<th scope=\"row\">" + data[i].codigoVuelo + "</th>" +
+							  "<td>" + data[i].fechaVuelo + " " + data[i].horaSalidaVuelo.substring(0, 5) + "</td>" +
+							  "<td>" + data[i].duracionVuelo + " mins</td>" +
+							  "<td>" + data[i].empresa.nombreEmpresa + "</td>" +
+							  "<td>" + data[i].precioVuelo + " €</td>" +
+						"</tr>").appendTo('#myTable');
 					}
-					$("<p>" + "Se han encontrado los vuelos." + "</p>").appendTo('#bodyModal');
+					$("</tbody></table>").appendTo("#myTable");
 				}).fail(function() {
+					$("#bodyModal").removeClass("modalB");
 					$("<p>" + "No se han encontrado vuelos disponibles para los datos introducidos." + "</p>").appendTo('#bodyModal');
 				});
 			} else {
+				$("#bodyModal").removeClass("modalB");
 				$("<p>" + "No se ha realizado la búsqueda porque algún campo estaba vacío." + "</p>").appendTo('#bodyModal');
 			}
 		} else {
@@ -65,15 +85,19 @@ $(document).ready(function() {
 						for (var i = 0; i < dataV.length; i++) {
 							vuelosVuelta[i] = dataV[i].codigoVuelo;
 						}
+						$("#bodyModal").addClass("modalB");
 						$("<p>" + "Se han encontrado los vuelos." + "</p>").appendTo('#bodyModal');
 					}).fail(function() {
+						$("#bodyModal").removeClass("modalB");
 						$("<p>" + "No se han encontrado vuelos de vuelta disponibles para los datos introducidos." + "</p>").appendTo('#bodyModal');
 					});
 					
 				}).fail(function() {
+					$("#bodyModal").removeClass("modalB");
 					$("<p>" + "No se han encontrado vuelos de salida disponibles para los datos introducidos." + "</p>").appendTo('#bodyModal');
 				});
 			} else {
+				$("#bodyModal").removeClass("modalB");
 				$("<p>" + "No se ha podido encontrar ningun vuelo porque algun campo no estaba relleno." + "</p>").appendTo('#bodyModal');
 			}
 		}

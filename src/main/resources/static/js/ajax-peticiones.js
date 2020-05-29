@@ -51,7 +51,8 @@ $(document).ready(function() {
 						      "<th scope=\"row\">" + data[i].codigoVuelo + "</th>" +
 							  "<td>" + data[i].fechaVuelo + " " + data[i].horaSalidaVuelo.substring(0, 5) + "</td>" +
 							  "<td>" + data[i].duracionVuelo + " mins</td>" +
-							  "<td onclick=\"mostrarEmpresa()\">" + data[i].empresa.nombreEmpresa + "</td>" +
+							  "<td id=\"b\" class=\"hand empresa\" onclick=\"mostrarEmpresa(this);\">" + 
+							  data[i].empresa.nombreEmpresa + "</td>" +
 							  "<td>" + data[i].precioVuelo + " €</td>" +
 						"</tr>").appendTo('#myTableIda');
 					}
@@ -88,28 +89,32 @@ $(document).ready(function() {
 								    	"<th scope=\"col\">Duración</th>" +
 								    	"<th scope=\"col\">Empresa</th>" +
 								    	"<th scope=\"col\">Precio</th>" +
+								    	"<th scope=\"col\">Precio Total</th>" +
 								    "</tr>" +
 								"</thead>" +
 								"<tbody>").appendTo('#bodyModal');
 						for (var i = 0; i < vuelosIda.length; i++) {
 							for (var j = 0; j < dataV.length; j++) {
 								if (vuelosIda[i].empresa.nombreEmpresa.localeCompare(dataV[j].empresa.nombreEmpresa) == 0) {
-									var empresa = vuelosIda[i].empresa.nombreEmpresa;
-									var precio = (vuelosIda[i].precioVuelo + dataV[j].precioVuelo) * 0.20;
+									var empresa = "<span class=\"hand empresa\" onclick=\"mostrarEmpresa(this);\">" + vuelosIda[i].empresa.nombreEmpresa + "</span>";
+									var precio = "<span class=\"text-danger\">" + "¡-20%!" + "</span><br/>" + 
+									((vuelosIda[i].precioVuelo + dataV[j].precioVuelo) - ((vuelosIda[i].precioVuelo + dataV[j].precioVuelo) * 0.20));
 								}
 								else {
-									var empresa = vuelosIda[i].empresa.nombreEmpresa + "<br/>" + dataV[j].empresa.nombreEmpresa;
-									var precio = vuelosIda[i].precioVuelo + "<br/>" + dataV[j].precioVuelo;
+									var empresa = "<span class=\"hand empresa\" onclick=\"mostrarEmpresa(this);\">" + vuelosIda[i].empresa.nombreEmpresa + "</span><br/>" + 
+									"<span class=\"hand empresa\" onclick=\"mostrarEmpresa(this);\">" + dataV[j].empresa.nombreEmpresa + "</span>";
+									var precio = vuelosIda[i].precioVuelo + dataV[j].precioVuelo;
 								}
 								$("<tr>" +
 								      "<th scope=\"row\">Ida: <br/>Vuelta: " + "</th>" +
 								      "<td>" + vuelosIda[i].codigoVuelo + "<br/>" + dataV[j].codigoVuelo + "</td>" +
-									  "<td>" + vuelosIda[i].fechaVuelo + " " + vuelosIda[i].horaSalidaVuelo.substring(0, 5) + 
+									  "<td>" + vuelosIda[i].fechaVuelo + " " + vuelosIda[i].horaSalidaVuelo.substring(0, 5) + "<br/>" + 
 									  dataV[j].fechaVuelo + " " + dataV[j].horaSalidaVuelo.substring(0, 5) + "</td>" +
-									  "<td>" + vuelosIda[i].duracionVuelo + "<br/>" + dataV[j].duracionVuelo + " mins</td>" +
+									  "<td>" + vuelosIda[i].duracionVuelo + " mins<br/>" + dataV[j].duracionVuelo + " mins</td>" +
 									  "<td>" + empresa + "</td>" +
+									  "<td>" + vuelosIda[i].precioVuelo + " €<br/>" + dataV[j].precioVuelo + " €</td>" +
 									  "<td>" + precio + " €</td>" +
-								"</tr>").appendTo('#myTableIda');
+								"</tr>").appendTo('#myTableIyV');
 							}
 						}
 						$("</tbody></table>").appendTo("#myTableIyV");
@@ -124,9 +129,10 @@ $(document).ready(function() {
 			}
 		}
 	});
-	
-	function mostrarEmpresa() {
-		alert("ventana modal con datos de empresa y valoraciones.");
-	});
-	
 });
+
+function mostrarEmpresa(nombreEmpresa) {
+	var nombre = $(nombreEmpresa).text();
+	alert("ventana modal con datos de empresa y valoraciones. " + nombre);
+}
+

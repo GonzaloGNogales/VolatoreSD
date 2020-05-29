@@ -27,6 +27,15 @@
 	margin-left: 10px;
 }
 
+.empresa {
+	text-decoration: underline;
+	color: blue;
+}
+
+.empresa:hover {
+	color: #9c27b0;
+}
+
 .date1 {
 	margin-left: 6px;
 }
@@ -9818,7 +9827,7 @@ margin-right
 
 @media ( min-width : 992px) {
 	.modal-lg {
-		max-width: 800px;
+		max-width: 1000px;
 	}
 }
 

@@ -132,7 +132,10 @@ $(document).ready(function() {
 });
 
 function mostrarEmpresa(nombreEmpresa) {
+	$("#bodyEmpresa").empty();
 	var nombre = $(nombreEmpresa).text();
-	alert("ventana modal con datos de empresa y valoraciones. " + nombre);
+	
+	
+	$("#modalEmpresa").modal("show");
 }
 

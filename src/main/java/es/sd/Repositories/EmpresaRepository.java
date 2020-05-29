@@ -7,6 +7,6 @@ public interface EmpresaRepository extends JpaRepository<Empresa, Long> {
 
 	// Métodos simples de consulta de la base de datos
 
-	Empresa findByIdEmpresa(long idEmpresa);
+	Empresa findByNombreEmpresa(String nombreEmpresa);
 
 }

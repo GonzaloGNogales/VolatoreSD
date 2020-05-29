@@ -51,7 +51,7 @@ $(document).ready(function() {
 						      "<th scope=\"row\">" + data[i].codigoVuelo + "</th>" +
 							  "<td>" + data[i].fechaVuelo + " " + data[i].horaSalidaVuelo.substring(0, 5) + "</td>" +
 							  "<td>" + data[i].duracionVuelo + " mins</td>" +
-							  "<td>" + data[i].empresa.nombreEmpresa + "</td>" +
+							  "<td onclick=\"mostrarEmpresa()\">" + data[i].empresa.nombreEmpresa + "</td>" +
 							  "<td>" + data[i].precioVuelo + " €</td>" +
 						"</tr>").appendTo('#myTableIda');
 					}
@@ -125,7 +125,7 @@ $(document).ready(function() {
 		}
 	});
 	
-	$("#botonEmpresa").click(function() {
+	function mostrarEmpresa() {
 		alert("ventana modal con datos de empresa y valoraciones.");
 	});
 	

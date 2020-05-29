@@ -17,11 +17,11 @@ public class EmpresasRestController {
 	@Autowired
 	private EmpresaRepository repEmpresas;
 
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET) // Petición para obtener la información de una empresa
-																	// en concreto
-	public ResponseEntity<Empresa> getEmpresa(@PathVariable(value = "id") long idEmpresa) {
+	@RequestMapping(value = "/{nombre}", method = RequestMethod.GET) // Petición para obtener la información de una empresa
+																	// en concreto dado su nombre
+	public ResponseEntity<Empresa> getEmpresa(@PathVariable(value = "nombre") String nombreEmpresa) {
 
-		Empresa empresa = repEmpresas.findByIdEmpresa(idEmpresa);
+		Empresa empresa = repEmpresas.findByNombreEmpresa(nombreEmpresa);
 
 		if (empresa != null)
 			return new ResponseEntity<>(empresa, HttpStatus.OK);

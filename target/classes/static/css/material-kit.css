@@ -37,7 +37,6 @@
 
 .modalB {
 	overflow-y: scroll;
-	height: 300px;
 }
 
 .scrollbar-deep-purple::-webkit-scrollbar-track {
@@ -2752,9 +2751,9 @@ pre code {
 }
 
 .table .thead-light th {
-	color: #495057;
-	background-color: #e9ecef;
-	border-color: rgba(0, 0, 0, 0.06);
+	color: white;
+	background-color: #9c27b0;
+	border-color: #3e0638;
 }
 
 .table-dark {

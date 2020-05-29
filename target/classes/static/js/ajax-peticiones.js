@@ -52,7 +52,7 @@ $(document).ready(function() {
 						      "<th scope=\"row\">" + data[i].codigoVuelo + "</th>" +
 							  "<td>" + data[i].fechaVuelo + " " + data[i].horaSalidaVuelo.substring(0, 5) + "</td>" +
 							  "<td>" + data[i].duracionVuelo + " mins</td>" +
-							  "<td>" + data[i].empresa.nombreEmpresa + "</td>" +
+							  "<td id=\"botonEmpresa\">" + data[i].empresa.nombreEmpresa + "</td>" +
 							  "<td>" + data[i].precioVuelo + " €</td>" +
 						"</tr>").appendTo('#myTable');
 					}
@@ -101,6 +101,10 @@ $(document).ready(function() {
 				$("<p>" + "No se ha podido encontrar ningun vuelo porque algun campo no estaba relleno." + "</p>").appendTo('#bodyModal');
 			}
 		}
+	});
+	
+	$("#botonEmpresa").click(function() {
+		alert("ventana modal con datos de empresa y valoraciones.");
 	});
 	
 });

@@ -64,4 +64,8 @@ $(document).ready(function() {
 	$("#botonClear2").click(function() {
 		$("#bodyModal").empty();
 	});
+	
+	$("#buscar").click(function() {
+		$("#bodyModal").empty();
+	});
 });

@@ -135,6 +135,18 @@ function mostrarEmpresa(nombreEmpresa) {
 	$("#bodyEmpresa").empty();
 	var nombre = $(nombreEmpresa).text();
 	
+	// Petición ajax de tipo get para obtener todos los datos de una empresa concreta del servidor
+	$.ajax({
+		url : "http://localhost:8080/empresas/" + nombre
+	}).done(function(empresa) {
+		$("<p>" + "<strong>Código: </strong>" + empresa.codigoEmpresa + "<br/>" + 
+				"<strong>Nombre: </strong>" + empresa.nombreEmpresa + "<br/>" +
+				"<strong>Web: </strong><a href=\"" + empresa.webEmpresa + "\">" + empresa.webEmpresa + "</a><br/>" +
+				"<strong>Teléfono: </strong>" + empresa.telefonoEmpresa + "</p>").appendTo('#bodyEmpresa');
+		$("<p>" + "Añadir valoración aquí." + "</p>").appendTo('#bodyEmpresa');
+	}).fail(function() {
+		$("<p>" + "No se ha encontrado la empresa." + "</p>").appendTo('#bodyEmpresa');
+	});
 	
 	$("#modalEmpresa").modal("show");
 }

@@ -159,8 +159,6 @@ function mostrarEmpresa(nombreEmpresa) {
 		    },
 			onSet: function (rating, rateYoInstance) {
 				// PETICION DE TIPO PUT PARA ACTUALIZAR EL CAMPO DE VALORACION DE LA EMPRESA
-				// empresa.valoracionEmpresa = (((empresa.valoracionEmpresa * empresa.contadorValoraciones) + rating) / (empresa.contadorValoraciones + 1));
-				// empresa.contadorValoraciones = empresa.contadorValoraciones + 1;
 			}
 		});
 	}).fail(function() {

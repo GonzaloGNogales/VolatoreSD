@@ -58,10 +58,10 @@ $(document).ready(function() {
 					}
 					$("</tbody></table>").appendTo("#myTableIda");
 				}).fail(function() {
-					$("<p>" + "No se han encontrado vuelos disponibles para los datos introducidos." + "</p>").appendTo('#bodyModal');
+					$("<h4>" + "No se han encontrado vuelos disponibles para los datos introducidos." + "</h4>").appendTo('#bodyModal');
 				});
 			} else {
-				$("<p>" + "No se ha realizado la búsqueda porque algún campo estaba vacío." + "</p>").appendTo('#bodyModal');
+				$("<h4>" + "No se ha realizado la búsqueda porque algún campo estaba vacío." + "</h4>").appendTo('#bodyModal');
 			}
 		} else {
 			var fechaVueltaRaw = $("#datepickerVuelta").val();
@@ -119,13 +119,13 @@ $(document).ready(function() {
 						}
 						$("</tbody></table>").appendTo("#myTableIyV");
 					}).fail(function() {
-						$("<p>" + "No se han encontrado vuelos de vuelta disponibles para los datos introducidos." + "</p>").appendTo('#bodyModal');
+						$("<h4>" + "No se han encontrado vuelos de vuelta disponibles para los datos introducidos." + "</h4>").appendTo('#bodyModal');
 					});
 				}).fail(function() {
-					$("<p>" + "No se han encontrado vuelos de salida disponibles para los datos introducidos." + "</p>").appendTo('#bodyModal');
+					$("<h4>" + "No se han encontrado vuelos de salida disponibles para los datos introducidos." + "</h4>").appendTo('#bodyModal');
 				});
 			} else {
-				$("<p>" + "No se ha podido encontrar ningun vuelo porque algun campo no estaba relleno." + "</p>").appendTo('#bodyModal');
+				$("<h4>" + "No se ha podido encontrar ningun vuelo porque algun campo no estaba relleno." + "</h4>").appendTo('#bodyModal');
 			}
 		}
 	});
@@ -139,13 +139,32 @@ function mostrarEmpresa(nombreEmpresa) {
 	$.ajax({
 		url : "http://localhost:8080/empresas/" + nombre
 	}).done(function(empresa) {
-		$("<p>" + "<strong>Código: </strong>" + empresa.codigoEmpresa + "<br/>" + 
+		$("<h5>" + "<strong>Código: </strong>" + empresa.codigoEmpresa + "<br/>" + 
 				"<strong>Nombre: </strong>" + empresa.nombreEmpresa + "<br/>" +
 				"<strong>Web: </strong><a href=\"" + empresa.webEmpresa + "\">" + empresa.webEmpresa + "</a><br/>" +
-				"<strong>Teléfono: </strong>" + empresa.telefonoEmpresa + "</p>").appendTo('#bodyEmpresa');
-		$("<p>" + "Añadir valoración aquí." + "</p>").appendTo('#bodyEmpresa');
+				"<strong>Teléfono: </strong>" + empresa.telefonoEmpresa + "</h5>").appendTo('#bodyEmpresa');
+		$("<div id=\"rateEmpresa\" class=\"mx-auto\"></div><div id=\"rate\" class=\"counter\">" + empresa.valoracionEmpresa + "</div>").appendTo('#bodyEmpresa');
+		
+		console.log(empresa.valoracionEmpresa);
+		
+		$("#rateEmpresa").rateYo({
+			rating: empresa.valoracionEmpresa,
+			precision: 1,
+			multiColor: {
+				"startColor": "#FF0000", // ROJO
+			    "endColor"  : "#F39C12"  // AMARILLO
+			},
+		    onChange: function (rating, rateYoInstance) {
+		    	$(this).next().text(rating);
+		    },
+			onSet: function (rating, rateYoInstance) {
+				// PETICION DE TIPO PUT PARA ACTUALIZAR EL CAMPO DE VALORACION DE LA EMPRESA
+				// empresa.valoracionEmpresa = (((empresa.valoracionEmpresa * empresa.contadorValoraciones) + rating) / (empresa.contadorValoraciones + 1));
+				// empresa.contadorValoraciones = empresa.contadorValoraciones + 1;
+			}
+		});
 	}).fail(function() {
-		$("<p>" + "No se ha encontrado la empresa." + "</p>").appendTo('#bodyEmpresa');
+		$("<h4>" + "No se ha encontrado la empresa." + "</h4>").appendTo('#bodyEmpresa');
 	});
 	
 	$("#modalEmpresa").modal("show");

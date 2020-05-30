@@ -45,6 +45,18 @@ public class Vuelo {
 
 	// Getters and Setters
 
+	public void setEmpresa(Empresa empresa) {
+		this.empresa = empresa;
+	}
+
+	public void setAeropuertoOrigen(Aeropuerto aeropuerto) {
+		this.aeropuertoOrigen = aeropuerto;
+	}
+
+	public void setAeropuertoDestino(Aeropuerto aeropuertoDestino) {
+		this.aeropuertoDestino = aeropuertoDestino;
+	}
+
 	public long getIdVuelo() {
 		return idVuelo;
 	}
@@ -97,24 +109,12 @@ public class Vuelo {
 		return empresa;
 	}
 
-	public void setEmpresa(Empresa empresa) {
-		this.empresa = empresa;
-	}
-
 	public Aeropuerto getAeropuertoOrigen() {
 		return aeropuertoOrigen;
 	}
 
-	public void setAeropuertoOrigen(Aeropuerto aeropuerto) {
-		this.aeropuertoOrigen = aeropuerto;
-	}
-
 	public Aeropuerto getAeropuertoDestino() {
 		return aeropuertoDestino;
-	}
-
-	public void setAeropuertoDestino(Aeropuerto aeropuertoDestino) {
-		this.aeropuertoDestino = aeropuertoDestino;
 	}
 
 }

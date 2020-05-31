@@ -1,5 +1,7 @@
 package es.sd.RestControllers;
 
+import java.text.DecimalFormat;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -34,15 +36,18 @@ public class EmpresasRestController {
 			@PathVariable(value = "valoracion") double valEmpresa, @RequestBody Empresa empresaActualizada) {
 
 		Empresa empresa = repEmpresas.findByNombreEmpresa(nombreEmpresa);
-		
+
 		if (empresa != null) {
-			empresa.setValoracionEmpresa(((empresa.getValoracionEmpresa() * empresa.getContadorValoraciones()) + valEmpresa) / (empresa.getContadorValoraciones() + 1));
-			empresa.setContadorValoraciones(empresa.getContadorValoraciones() + 1);
-			repEmpresas.save(empresa);
+			DecimalFormat formater = new DecimalFormat("##.0");
+			double nuevoVal = (((empresa.getValoracionEmpresa() * empresa.getContadorValoraciones()) + valEmpresa)
+					/ (empresa.getContadorValoraciones() + 1));
 			
+			empresaActualizada.setValoracionEmpresa(Double.parseDouble(formater.format(nuevoVal).replace(',', '.')));
+			empresaActualizada.setContadorValoraciones(empresa.getContadorValoraciones() + 1); // Aumenta el contador de valoraciones totales
+			repEmpresas.save(empresaActualizada); // Actualizar la valoración de la empresa en la base de datos
+
 			return new ResponseEntity<>(empresa, HttpStatus.OK);
-		}
-		else
+		} else
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
 

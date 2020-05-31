@@ -144,9 +144,7 @@ function mostrarEmpresa(nombreEmpresa) {
 				"<strong>Web: </strong><a href=\"" + empresa.webEmpresa + "\">" + empresa.webEmpresa + "</a><br/>" +
 				"<strong>Teléfono: </strong>" + empresa.telefonoEmpresa + "</h5>").appendTo('#bodyEmpresa');
 		$("<div id=\"rateEmpresa\" class=\"mx-auto\"></div><div id=\"rate\" class=\"counter\">" + empresa.valoracionEmpresa + "</div>").appendTo('#bodyEmpresa');
-		
-		console.log(empresa.valoracionEmpresa);
-		
+				
 		$("#rateEmpresa").rateYo({
 			rating: empresa.valoracionEmpresa,
 			precision: 1,
@@ -158,7 +156,20 @@ function mostrarEmpresa(nombreEmpresa) {
 		    	$(this).next().text(rating);
 		    },
 			onSet: function (rating, rateYoInstance) {
-				// PETICION DE TIPO PUT PARA ACTUALIZAR EL CAMPO DE VALORACION DE LA EMPRESA
+				// Peticion de tipo PUT para actualizar el campo de valoracion de la empresa
+				$.ajax({
+			        method: "PUT",
+			        url: "http://localhost:8080/empresas/" + nombre + "/" + rating,
+			        data: JSON.stringify(empresa),
+			        processData: false,
+			        headers: {
+			            "Content-Type": "application/json"
+			        }
+			    }).done(function (empresa) {
+			    	$("#rateEmpresa").hide();
+			    	$("#rate").hide();
+			    	$("<p>Se ha registrado correctamente su valoracion, muchas gracias</p>").appendTo('#bodyEmpresa').fadeIn(400);
+			    })
 			}
 		});
 	}).fail(function() {

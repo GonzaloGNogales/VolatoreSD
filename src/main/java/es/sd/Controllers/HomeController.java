@@ -164,7 +164,7 @@ public class HomeController {
 		vuelo10.setAeropuertoDestino(aeropuerto1); // Madrid Barajas
 		repVuelos.save(vuelo10);
 		
-		java.sql.Time hora11 = Time.valueOf(LocalTime.of(8, 45));
+		java.sql.Time hora11 = Time.valueOf(LocalTime.of(17, 35));
 		Vuelo vuelo11 = new Vuelo("PN3225", fecha6, hora11, 31, 850); 
 		vuelo11.setEmpresa(empresa2);
 		vuelo11.setAeropuertoOrigen(aeropuerto7); // Barcelona
@@ -172,22 +172,22 @@ public class HomeController {
 		repVuelos.save(vuelo11);
 		
 		java.sql.Date fecha8 = Date.valueOf(LocalDate.of(2020, 05, 31));
-		java.sql.Time hora12 = Time.valueOf(LocalTime.of(8, 45));
-		Vuelo vuelo12 = new Vuelo("PN3225", fecha8, hora12, 31, 932);
+		java.sql.Time hora12 = Time.valueOf(LocalTime.of(18, 45));
+		Vuelo vuelo12 = new Vuelo("MF7550", fecha8, hora12, 31, 932);
 		vuelo12.setEmpresa(empresa2);
 		vuelo12.setAeropuertoOrigen(aeropuerto7); // Barcelona
 		vuelo12.setAeropuertoDestino(aeropuerto1); // Madrid Barajas
 		repVuelos.save(vuelo12);
 		
 		java.sql.Time hora13 = Time.valueOf(LocalTime.of(9, 45));
-		Vuelo vuelo13 = new Vuelo("PN3225", fecha8, hora13, 27, 1521);
+		Vuelo vuelo13 = new Vuelo("LO7845", fecha8, hora13, 27, 1521);
 		vuelo13.setEmpresa(empresa2);
 		vuelo13.setAeropuertoOrigen(aeropuerto7); // Barcelona
 		vuelo13.setAeropuertoDestino(aeropuerto1); // Madrid Barajas
 		repVuelos.save(vuelo13);
 		
 		java.sql.Time hora14 = Time.valueOf(LocalTime.of(11, 45));
-		Vuelo vuelo14 = new Vuelo("PN3225", fecha8, hora14, 35, 788); 
+		Vuelo vuelo14 = new Vuelo("KR6335", fecha8, hora14, 35, 788); 
 		vuelo14.setEmpresa(empresa3);
 		vuelo14.setAeropuertoOrigen(aeropuerto7); // Barcelona
 		vuelo14.setAeropuertoDestino(aeropuerto1); // Madrid Barajas

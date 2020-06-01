@@ -29,12 +29,24 @@ $(document).ready(function() {
 		var fechaIdaRaw = $("#datepickerIda").val();
 		var fechaIda = fechaIdaRaw.split("/").reverse().join("-");
 		
+		// Resetear la ventana emergente sea scrolleable
+		$("#bodyModal").removeClass("bodyScroll");
+		$("#contentModal").removeClass("contentDialogHeight1");
+		$("#dialogModal").removeClass("contentDialogHeight1");
+		$("#contentModal").removeClass("contentDialogHeight2");
+		$("#dialogModal").removeClass("contentDialogHeight2");
+		
 		if($('#botonI').is(':checked')) {
 			// Se revisan los botones de solo ida o de ida y vuelta para realizar las peticiones al servidor
 			if (origen.length != 0 && destino.length != 0 && fechaIda.length != 0) {
 				$.ajax({
 					url : "http://localhost:8080/vuelos/" + origen + "/" + destino + "/" + fechaIda
 				}).done(function(data) {
+					// Hacer que la ventana emergente sea scrolleable
+					$("#bodyModal").addClass("bodyScroll");
+					$("#contentModal").addClass("contentDialogHeight1");
+					$("#dialogModal").addClass("contentDialogHeight1");
+					
 					$("<table id=\"myTableIda\" class=\"table table-striped\">" +
 							"<thead class=\"thead-light\">" +
 								"<tr>" +
@@ -89,6 +101,11 @@ $(document).ready(function() {
 					$.ajax({
 						url : "http://localhost:8080/vuelos/" + destino + "/" + origen + "/" + fechaVuelta
 					}).done(function(dataV) {
+						// Hacer que la ventana emergente sea scrolleable
+						$("#bodyModal").addClass("bodyScroll");
+						$("#contentModal").addClass("contentDialogHeight2");
+						$("#dialogModal").addClass("contentDialogHeight2");
+						
 						$("<table id=\"myTableIyV\" class=\"table table-striped\">" +
 								"<thead class=\"thead-light\">" +
 									"<tr>" +
@@ -104,26 +121,31 @@ $(document).ready(function() {
 								"<tbody>").appendTo('#bodyModal');
 						for (var i = 0; i < vuelosIda.length; i++) {
 							for (var j = 0; j < dataV.length; j++) {
-								if (vuelosIda[i].empresa.nombreEmpresa.localeCompare(dataV[j].empresa.nombreEmpresa) == 0) {
-									var empresa = "<span class=\"hand empresa\" onclick=\"mostrarEmpresa(this);\">" + vuelosIda[i].empresa.nombreEmpresa + "</span>";
-									var precio = "<span class=\"text-danger\">" + "¡-20%!" + "</span><br/>" + 
-									((vuelosIda[i].precioVuelo + dataV[j].precioVuelo) - ((vuelosIda[i].precioVuelo + dataV[j].precioVuelo) * 0.20));
+								var horaIda = vuelosIda[i].horaSalidaVuelo;
+								var horaVuelta = dataV[j].horaSalidaVuelo;
+
+								if (horaIda < horaVuelta) {
+									if (vuelosIda[i].empresa.nombreEmpresa.localeCompare(dataV[j].empresa.nombreEmpresa) == 0) {
+										var empresa = "<span class=\"hand empresa\" onclick=\"mostrarEmpresa(this);\">" + vuelosIda[i].empresa.nombreEmpresa + "</span>";
+										var precio = "<span class=\"text-danger\">" + "¡-20%!" + "</span><br/>" + 
+										((vuelosIda[i].precioVuelo + dataV[j].precioVuelo) - ((vuelosIda[i].precioVuelo + dataV[j].precioVuelo) * 0.20));
+									}
+									else {
+										var empresa = "<span class=\"hand empresa\" onclick=\"mostrarEmpresa(this);\">" + vuelosIda[i].empresa.nombreEmpresa + "</span><br/>" + 
+										"<span class=\"hand empresa\" onclick=\"mostrarEmpresa(this);\">" + dataV[j].empresa.nombreEmpresa + "</span>";
+										var precio = vuelosIda[i].precioVuelo + dataV[j].precioVuelo;
+									}
+									$("<tr>" +
+									      "<th scope=\"row\">Ida: <br/>Vuelta: " + "</th>" +
+									      "<td>" + vuelosIda[i].codigoVuelo + "<br/>" + dataV[j].codigoVuelo + "</td>" +
+										  "<td>" + vuelosIda[i].fechaVuelo.split("-").reverse().join("-") + " " + vuelosIda[i].horaSalidaVuelo.substring(0, 5) + "<br/>" + 
+										  dataV[j].fechaVuelo.split("-").reverse().join("-") + " " + dataV[j].horaSalidaVuelo.substring(0, 5) + "</td>" +
+										  "<td>" + vuelosIda[i].duracionVuelo + " mins<br/>" + dataV[j].duracionVuelo + " mins</td>" +
+										  "<td>" + empresa + "</td>" +
+										  "<td>" + vuelosIda[i].precioVuelo + " €<br/>" + dataV[j].precioVuelo + " €</td>" +
+										  "<td>" + precio + " €</td>" +
+									"</tr>").appendTo('#myTableIyV');
 								}
-								else {
-									var empresa = "<span class=\"hand empresa\" onclick=\"mostrarEmpresa(this);\">" + vuelosIda[i].empresa.nombreEmpresa + "</span><br/>" + 
-									"<span class=\"hand empresa\" onclick=\"mostrarEmpresa(this);\">" + dataV[j].empresa.nombreEmpresa + "</span>";
-									var precio = vuelosIda[i].precioVuelo + dataV[j].precioVuelo;
-								}
-								$("<tr>" +
-								      "<th scope=\"row\">Ida: <br/>Vuelta: " + "</th>" +
-								      "<td>" + vuelosIda[i].codigoVuelo + "<br/>" + dataV[j].codigoVuelo + "</td>" +
-									  "<td>" + vuelosIda[i].fechaVuelo.split("-").reverse().join("-") + " " + vuelosIda[i].horaSalidaVuelo.substring(0, 5) + "<br/>" + 
-									  dataV[j].fechaVuelo.split("-").reverse().join("-") + " " + dataV[j].horaSalidaVuelo.substring(0, 5) + "</td>" +
-									  "<td>" + vuelosIda[i].duracionVuelo + " mins<br/>" + dataV[j].duracionVuelo + " mins</td>" +
-									  "<td>" + empresa + "</td>" +
-									  "<td>" + vuelosIda[i].precioVuelo + " €<br/>" + dataV[j].precioVuelo + " €</td>" +
-									  "<td>" + precio + " €</td>" +
-								"</tr>").appendTo('#myTableIyV');
 							}
 						}
 						$("</tbody></table>").appendTo("#myTableIyV");

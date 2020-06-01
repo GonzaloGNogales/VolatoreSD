@@ -49,7 +49,7 @@ $(document).ready(function() {
 					for (var i = 0; i < data.length; i++) {
 						$("<tr>" +
 						      "<th scope=\"row\">" + data[i].codigoVuelo + "</th>" +
-							  "<td>" + data[i].fechaVuelo + " " + data[i].horaSalidaVuelo.substring(0, 5) + "</td>" +
+							  "<td>" + data[i].fechaVuelo.split("-").reverse().join("-") + " " + data[i].horaSalidaVuelo.substring(0, 5) + "</td>" +
 							  "<td>" + data[i].duracionVuelo + " mins</td>" +
 							  "<td id=\"b\" class=\"hand empresa\" onclick=\"mostrarEmpresa(this);\">" + 
 							  data[i].empresa.nombreEmpresa + "</td>" +
@@ -67,7 +67,16 @@ $(document).ready(function() {
 			var fechaVueltaRaw = $("#datepickerVuelta").val();
 			var fechaVuelta = fechaVueltaRaw.split("/").reverse().join("-");
 			
-			if (origen.length != 0 && destino.length != 0 && fechaIda.length != 0 && fechaVuelta.length != 0) {
+			var fechaCompara1 = fechaIda.split("-").reverse();
+			var fechaCompara2 = fechaVuelta.split("-").reverse();
+			
+			if (fechaCompara2[1] < fechaCompara1[1]) { // Condiciones para impedir que se busquen vuelos incoherentes
+				$("<h4>" + "No se ha podido encontrar ningun vuelo porque la fecha de vuelta es anterior a la de ida." + "</h4>").appendTo('#bodyModal');
+			}
+			else if ((fechaCompara2[1] == fechaCompara1[1]) && (fechaCompara2[0] < fechaCompara1[0])) {
+				$("<h4>" + "No se ha podido encontrar ningun vuelo porque la fecha de vuelta es anterior a la de ida." + "</h4>").appendTo('#bodyModal');
+			}
+			else if (origen.length != 0 && destino.length != 0 && fechaIda.length != 0 && fechaVuelta.length != 0) {
 				// Se realizan 2 peticiones asíncronas al servidor para recoger todos los vuelos de ida y vuelta
 				$.ajax({
 					url : "http://localhost:8080/vuelos/" + origen + "/" + destino + "/" + fechaIda
@@ -108,8 +117,8 @@ $(document).ready(function() {
 								$("<tr>" +
 								      "<th scope=\"row\">Ida: <br/>Vuelta: " + "</th>" +
 								      "<td>" + vuelosIda[i].codigoVuelo + "<br/>" + dataV[j].codigoVuelo + "</td>" +
-									  "<td>" + vuelosIda[i].fechaVuelo + " " + vuelosIda[i].horaSalidaVuelo.substring(0, 5) + "<br/>" + 
-									  dataV[j].fechaVuelo + " " + dataV[j].horaSalidaVuelo.substring(0, 5) + "</td>" +
+									  "<td>" + vuelosIda[i].fechaVuelo.split("-").reverse().join("-") + " " + vuelosIda[i].horaSalidaVuelo.substring(0, 5) + "<br/>" + 
+									  dataV[j].fechaVuelo.split("-").reverse().join("-") + " " + dataV[j].horaSalidaVuelo.substring(0, 5) + "</td>" +
 									  "<td>" + vuelosIda[i].duracionVuelo + " mins<br/>" + dataV[j].duracionVuelo + " mins</td>" +
 									  "<td>" + empresa + "</td>" +
 									  "<td>" + vuelosIda[i].precioVuelo + " €<br/>" + dataV[j].precioVuelo + " €</td>" +

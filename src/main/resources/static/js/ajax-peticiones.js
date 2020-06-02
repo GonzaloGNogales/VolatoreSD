@@ -31,10 +31,8 @@ $(document).ready(function() {
 		
 		// Resetear la ventana emergente sea scrolleable
 		$("#bodyModal").removeClass("bodyScroll");
-		$("#contentModal").removeClass("contentDialogHeight1");
-		$("#dialogModal").removeClass("contentDialogHeight1");
-		$("#contentModal").removeClass("contentDialogHeight2");
-		$("#dialogModal").removeClass("contentDialogHeight2");
+		$("#contentModal").removeClass("contentDialogHeight");
+		$("#dialogModal").removeClass("contentDialogHeight");
 		
 		if($('#botonI').is(':checked')) {
 			// Se revisan los botones de solo ida o de ida y vuelta para realizar las peticiones al servidor
@@ -44,31 +42,90 @@ $(document).ready(function() {
 				}).done(function(data) {
 					// Hacer que la ventana emergente sea scrolleable
 					$("#bodyModal").addClass("bodyScroll");
-					$("#contentModal").addClass("contentDialogHeight1");
-					$("#dialogModal").addClass("contentDialogHeight1");
+					$("#contentModal").addClass("contentDialogHeight");
+					$("#dialogModal").addClass("contentDialogHeight");
 					
-					$("<table id=\"myTableIda\" class=\"table table-striped\">" +
-							"<thead class=\"thead-light\">" +
-								"<tr>" +
-							    	"<th scope=\"col\">Código</th>" +
-							    	"<th scope=\"col\">Fecha</th>" +
-							    	"<th scope=\"col\">Duración</th>" +
-							    	"<th scope=\"col\">Empresa</th>" +
-							    	"<th scope=\"col\">Precio</th>" +
-							    "</tr>" +
-							"</thead>" +
-							"<tbody>").appendTo('#bodyModal');
 					for (var i = 0; i < data.length; i++) {
-						$("<tr>" +
-						      "<th scope=\"row\">" + data[i].codigoVuelo + "</th>" +
-							  "<td>" + data[i].fechaVuelo.split("-").reverse().join("-") + " " + data[i].horaSalidaVuelo.substring(0, 5) + "</td>" +
-							  "<td>" + data[i].duracionVuelo + " mins</td>" +
-							  "<td id=\"b\" class=\"hand empresa\" onclick=\"mostrarEmpresa(this);\">" + 
-							  data[i].empresa.nombreEmpresa + "</td>" +
-							  "<td>" + data[i].precioVuelo + " €</td>" +
-						"</tr>").appendTo('#myTableIda');
+						$("<div id=\"cont\" class=\"container-fluid\">" +
+							"<div class=\"row rounded border border-dark paddedCustom\">" + 
+							
+								"<div class=\"col-md-4 text-left\">" +
+								
+									"<div class=\row\">" +
+										"<div class=\"col-md-12\">" +
+											"<span><strong>Código: </strong>" + data[i].codigoVuelo + "</span>" +
+										"</div>" +
+									"</div>" +
+									
+									"<div class=\row\">" +
+										"<div class=\"col-md-12\">" +
+											"<span><strong>Fecha del Vuelo: </strong>" + data[i].fechaVuelo.split("-").reverse().join("-") + "</span>" +
+										"</div>" +
+									"</div>" +
+									
+									"<div class=\row\">" +
+										"<div class=\"col-md-12\">" +
+											"<span><strong>Hora de salida: </strong>" + data[i].horaSalidaVuelo.substring(0, 5) + "</span>" +
+										"</div>" +
+									"</div>" +
+									
+									"<div class=\row\">" +
+										"<div class=\"col-md-12\">" +
+											"<span><strong>Empresa: </strong></span>" +
+											"<span id=\"b\" class=\"hand empresa\" onclick=\"mostrarEmpresa(this);\">" + 
+											data[i].empresa.nombreEmpresa + "</span>" +
+										"</div>" +
+									"</div>" +
+		
+								"</div>" +
+
+								"<div class=\"col-md-5 text-center\">" +
+								
+									"<div class=\row\">" +
+										"<div class=\"col-md-12 oriDestFont\">" +
+											"<span>" + data[i].aeropuertoOrigen.nombreAeropuerto + "</span>" +
+										"</div>" +
+									"</div>" +
+							
+									"<div class=\row\">" +
+										"<div class=\"col-md-12 oriDestFont\">" +
+											"<i class=\"fa fa-long-arrow-right anchoFlecha\" aria-hidden=\"true\"></i>" +
+										"</div>" +
+									"</div>" +
+							
+									"<div class=\row\">" +
+										"<div class=\"col-md-12 oriDestFont\">" +
+											"<span>" + data[i].aeropuertoDestino.nombreAeropuerto + "</span>" +
+										"</div>" +
+									"</div>" +
+							
+									"<div class=\row\">" +
+										"<div class=\"col-md-12\">" +
+											"<span><strong>Duración: </strong></span><span>" + data[i].duracionVuelo + " mins</span>" +
+										"</div>" +
+									"</div>" +
+							
+								"</div>" +
+
+								"<div class=\"col-md-3 text-center\">" +
+								
+									"<div class=\"row\">" +
+										"<div class=\"col-md-12 text-center\">" +
+											"<span><strong>Precio:</strong></span>" +
+										"</div>" +
+									"</div><br>" +
+									
+									"<div class=\"row\">" +
+										"<div class=\"col-md-12 text-right\">" +
+											"<span class=\"largeFont text-right colorPrecio\">" + data[i].precioVuelo + " €</span>" +
+										"</div>" +
+									"</div>" +	
+									
+								"</div>" +
+								
+							"</div>" +
+						"</div>").appendTo('#bodyModal');
 					}
-					$("</tbody></table>").appendTo("#myTableIda");
 				}).fail(function() {
 					$("<h4>" + "No se han encontrado vuelos disponibles para los datos introducidos." + "</h4>").appendTo('#bodyModal');
 				});
@@ -103,8 +160,8 @@ $(document).ready(function() {
 					}).done(function(dataV) {
 						// Hacer que la ventana emergente sea scrolleable
 						$("#bodyModal").addClass("bodyScroll");
-						$("#contentModal").addClass("contentDialogHeight2");
-						$("#dialogModal").addClass("contentDialogHeight2");
+						$("#contentModal").addClass("contentDialogHeight");
+						$("#dialogModal").addClass("contentDialogHeight");
 						
 						$("<table id=\"myTableIyV\" class=\"table table-striped\">" +
 								"<thead class=\"thead-light\">" +

@@ -17,6 +17,37 @@
 	display: none;
 }
 
+.paddedCustom {
+	padding-top: 15px;
+	padding-bottom: 15px;
+	padding-right: 40px;
+	margin-bottom: 35px;
+}
+
+.paddingOriDest {
+	padding-right: 200px;
+}
+
+.paddingDuracion {
+	padding-top: 20px;
+}
+
+.largeFont {
+	font-size: 30px;
+}
+
+.oriDestFont {
+	font-size: 15px;
+}
+
+.colorPrecio {
+	color: green;
+}
+
+.anchoFlecha {
+	width: 40px;
+}
+
 #datepickerIda {
 	width: 77px;
 	margin-left: 10px;
@@ -10232,11 +10263,7 @@ button.close {
 	outline: 0;
 }
 
-.contentDialogHeight1 {
-	height: 60%;
-}
-
-.contentDialogHeight2 {
+.contentDialogHeight {
 	height: 80%;
 }
 

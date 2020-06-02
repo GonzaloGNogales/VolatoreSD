@@ -24,7 +24,7 @@ public class VuelosRestController {
 	@Autowired
 	private AeropuertoRepository repAeropuertos;
 
-	@RequestMapping(value = "/{origen}/{destino}/{fecha}", method = RequestMethod.GET) // Método GET para vuelos concretos
+	@RequestMapping(value = "/{origen}/{destino}/{fecha}", method = RequestMethod.GET) // Método GET para vuelos concretos dado origen y destino
 	public ResponseEntity<Collection<Vuelo>> getVuelosDeterminados(@PathVariable(value = "origen") String nombreOrigen,
 			@PathVariable(value = "destino") String nombreDestino, @PathVariable(value = "fecha") String fechaVuelo) {
 

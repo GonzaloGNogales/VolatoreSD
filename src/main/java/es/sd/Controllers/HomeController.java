@@ -58,19 +58,19 @@ public class HomeController {
 
 		// EMPRESAS
 
-		Empresa empresa1 = new Empresa("NZ", "Air New Zealand", "https://www.airnewzealand.com/", 900993241);
+		Empresa empresa1 = new Empresa("NZ", "Air New Zealand", "https://www.airnewzealand.com/", 900993241, 4.7);
 		repEmpresas.save(empresa1);
 
-		Empresa empresa2 = new Empresa("AS", "Alaska Airlines", "https://www.alaskaair.com/", 900954724);
+		Empresa empresa2 = new Empresa("AS", "Alaska Airlines", "https://www.alaskaair.com/", 900954724, 5);
 		repEmpresas.save(empresa2);
 
-		Empresa empresa3 = new Empresa("NH", "All Nippon Airways", "https://www.ana.co.jp/en/eur/", 900653123);
+		Empresa empresa3 = new Empresa("NH", "All Nippon Airways", "https://www.ana.co.jp/en/eur/", 900653123, 2.3);
 		repEmpresas.save(empresa3);
 
-		Empresa empresa4 = new Empresa("AY", "Finnair", "https://www.finnair.com/", 900456789);
+		Empresa empresa4 = new Empresa("AY", "Finnair", "https://www.finnair.com/", 900456789, 3.5);
 		repEmpresas.save(empresa4);
 
-		Empresa empresa5 = new Empresa("RJ", "Royal Jordanian Airlines", "https://rj.com/", 900121323);
+		Empresa empresa5 = new Empresa("RJ", "Royal Jordanian Airlines", "https://rj.com/", 900121323, 4.2);
 		repEmpresas.save(empresa5);
 
 		// VUELOS

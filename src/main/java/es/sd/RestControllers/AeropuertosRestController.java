@@ -15,7 +15,7 @@ public class AeropuertosRestController {
 	@Autowired
 	private AeropuertoRepository repAeropuertos;
 
-	@RequestMapping(value = "/", method = RequestMethod.GET) // Peticion HTTP GET para obtener todos los aeropuertos
+	@RequestMapping(value = "/", method = RequestMethod.GET) // Peticion HTTP GET para obtener todos los aeropuertos e inicializar los autocomplete
 	public Collection<Aeropuerto> getAeropuertos() {
 		return repAeropuertos.findAll();
 	}

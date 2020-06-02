@@ -183,25 +183,7 @@ function mostrarEmpresa(nombreEmpresa) {
 				"startColor": "#FF0000", // ROJO
 			    "endColor"  : "#F39C12"  // AMARILLO
 			},
-		    onChange: function (rating, rateYoInstance) {
-		    	$(this).next().text(rating);
-		    },
-			onSet: function (rating, rateYoInstance) {
-				// Peticion de tipo PUT para actualizar el campo de valoracion de la empresa
-				$.ajax({
-			        method: "PUT",
-			        url: "http://localhost:8080/empresas/" + nombre + "/" + rating,
-			        data: JSON.stringify(empresa),
-			        processData: false,
-			        headers: {
-			            "Content-Type": "application/json"
-			        }
-			    }).done(function (empresa) {
-			    	$("#rateEmpresa").hide();
-			    	$("#rate").hide();
-			    	$("<p>Se ha registrado correctamente su valoracion, muchas gracias</p>").appendTo('#bodyEmpresa').fadeIn(400);
-			    })
-			}
+			readOnly: true
 		});
 	}).fail(function() {
 		$("<h4>" + "No se ha encontrado la empresa." + "</h4>").appendTo('#bodyEmpresa');

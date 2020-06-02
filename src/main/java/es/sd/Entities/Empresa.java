@@ -17,20 +17,18 @@ public class Empresa {
 	private String webEmpresa;
 	private int telefonoEmpresa;
 	private double valoracionEmpresa;
-	private int contadorValoraciones;
 
 	// Generator Constructors
 
 	public Empresa() {
 	}
 
-	public Empresa(String codigo, String nombre, String web, int telefono) {
+	public Empresa(String codigo, String nombre, String web, int telefono, double valoracion) {
 		this.codigoEmpresa = codigo;
 		this.nombreEmpresa = nombre;
 		this.webEmpresa = web;
 		this.telefonoEmpresa = telefono;
-		this.valoracionEmpresa = 0; // Valoración inicial de 0 porque nadie ha valorado
-		this.contadorValoraciones = 0;
+		this.valoracionEmpresa = valoracion;
 	}
 
 	// Getters and Setters
@@ -81,14 +79,6 @@ public class Empresa {
 
 	public void setValoracionEmpresa(double valoracionEmpresa) {
 		this.valoracionEmpresa = valoracionEmpresa;
-	}
-
-	public int getContadorValoraciones() {
-		return contadorValoraciones;
-	}
-
-	public void setContadorValoraciones(int contadorValoraciones) {
-		this.contadorValoraciones = contadorValoraciones;
 	}
 
 }

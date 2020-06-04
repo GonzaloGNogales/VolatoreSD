@@ -162,50 +162,173 @@ $(document).ready(function() {
 						$("#bodyModal").addClass("bodyScroll");
 						$("#contentModal").addClass("contentDialogHeight");
 						$("#dialogModal").addClass("contentDialogHeight");
-						
-						$("<table id=\"myTableIyV\" class=\"table table-striped\">" +
-								"<thead class=\"thead-light\">" +
-									"<tr>" +
-										"<th scope=\"col\">Tipo de Vuelo</th>" +
-								    	"<th scope=\"col\">Código</th>" +
-								    	"<th scope=\"col\">Fecha</th>" +
-								    	"<th scope=\"col\">Duración</th>" +
-								    	"<th scope=\"col\">Empresa</th>" +
-								    	"<th scope=\"col\">Precio</th>" +
-								    	"<th scope=\"col\">Precio Total</th>" +
-								    "</tr>" +
-								"</thead>" +
-								"<tbody>").appendTo('#bodyModal');
+
 						for (var i = 0; i < vuelosIda.length; i++) {
 							for (var j = 0; j < dataV.length; j++) {
 								var horaIda = vuelosIda[i].horaSalidaVuelo;
 								var horaVuelta = dataV[j].horaSalidaVuelo;
 
+								// Se comprueba que las horas no sean incoherentes y que de tiempo a coger el vuelo de vuelta
 								if (horaIda < horaVuelta) {
 									if (vuelosIda[i].empresa.nombreEmpresa.localeCompare(dataV[j].empresa.nombreEmpresa) == 0) {
-										var empresa = "<span class=\"hand empresa\" onclick=\"mostrarEmpresa(this);\">" + vuelosIda[i].empresa.nombreEmpresa + "</span>";
-										var precio = "<span class=\"text-danger\">" + "¡-20%!" + "</span><br/>" + 
+										var precioTotal = "<span class=\"text-danger\">" + "¡-20%!" + "</span><br/>" + 
 										((vuelosIda[i].precioVuelo + dataV[j].precioVuelo) - ((vuelosIda[i].precioVuelo + dataV[j].precioVuelo) * 0.20));
 									}
 									else {
-										var empresa = "<span class=\"hand empresa\" onclick=\"mostrarEmpresa(this);\">" + vuelosIda[i].empresa.nombreEmpresa + "</span><br/>" + 
-										"<span class=\"hand empresa\" onclick=\"mostrarEmpresa(this);\">" + dataV[j].empresa.nombreEmpresa + "</span>";
-										var precio = vuelosIda[i].precioVuelo + dataV[j].precioVuelo;
+										var precioTotal = vuelosIda[i].precioVuelo + dataV[j].precioVuelo;
 									}
-									$("<tr>" +
-									      "<th scope=\"row\">Ida: <br/>Vuelta: " + "</th>" +
-									      "<td>" + vuelosIda[i].codigoVuelo + "<br/>" + dataV[j].codigoVuelo + "</td>" +
-										  "<td>" + vuelosIda[i].fechaVuelo.split("-").reverse().join("-") + " " + vuelosIda[i].horaSalidaVuelo.substring(0, 5) + "<br/>" + 
-										  dataV[j].fechaVuelo.split("-").reverse().join("-") + " " + dataV[j].horaSalidaVuelo.substring(0, 5) + "</td>" +
-										  "<td>" + vuelosIda[i].duracionVuelo + " mins<br/>" + dataV[j].duracionVuelo + " mins</td>" +
-										  "<td>" + empresa + "</td>" +
-										  "<td>" + vuelosIda[i].precioVuelo + " €<br/>" + dataV[j].precioVuelo + " €</td>" +
-										  "<td>" + precio + " €</td>" +
-									"</tr>").appendTo('#myTableIyV');
+									
+									$("<div id=\"cont\" class=\"container-fluid\">" +
+											"<div class=\"row rounded border border-dark paddedCustom\">" + 
+											
+												"<div class=\"col-md-4 text-left\">" +
+											
+													"<div class=\row\">" +
+														"<div class=\"col-md-12\">" +
+															"<span><strong>Código: </strong>" + vuelosIda[i].codigoVuelo + "</span>" +
+														"</div>" +
+													"</div>" +
+													
+													"<div class=\row\">" +
+														"<div class=\"col-md-12\">" +
+															"<span><strong>Fecha de Ida: </strong>" + vuelosIda[i].fechaVuelo.split("-").reverse().join("-") + "</span>" +
+														"</div>" +
+													"</div>" +
+													
+													"<div class=\row\">" +
+														"<div class=\"col-md-12\">" +
+															"<span><strong>Hora de Salida: </strong>" + vuelosIda[i].horaSalidaVuelo.substring(0, 5) + "</span>" +
+														"</div>" +
+													"</div>" +
+													
+													"<div class=\row\">" +
+														"<div class=\"col-md-12\">" +
+															"<span><strong>Empresa: </strong></span>" +
+															"<span id=\"b\" class=\"hand empresa\" onclick=\"mostrarEmpresa(this);\">" + 
+															vuelosIda[i].empresa.nombreEmpresa + "</span>" +
+														"</div>" +
+													"</div>" +
+													
+													"<hr>" +
+													
+													"<div class=\row\">" +
+														"<div class=\"col-md-12\">" +
+															"<span><strong>Código: </strong>" + dataV[j].codigoVuelo + "</span>" +
+														"</div>" +
+													"</div>" +
+												
+													"<div class=\row\">" +
+														"<div class=\"col-md-12\">" +
+															"<span><strong>Fecha de Vuelta: </strong>" + dataV[j].fechaVuelo.split("-").reverse().join("-") + "</span>" +
+														"</div>" +
+													"</div>" +
+													
+													"<div class=\row\">" +
+														"<div class=\"col-md-12\">" +
+															"<span><strong>Hora de salida: </strong>" + dataV[j].horaSalidaVuelo.substring(0, 5) + "</span>" +
+														"</div>" +
+													"</div>" +
+												
+													"<div class=\row\">" +
+														"<div class=\"col-md-12\">" +
+															"<span><strong>Empresa: </strong></span>" +
+															"<span id=\"b\" class=\"hand empresa\" onclick=\"mostrarEmpresa(this);\">" + 
+															dataV[j].empresa.nombreEmpresa + "</span>" +
+														"</div>" +
+													"</div>" +
+					
+												"</div>" +
+
+												"<div class=\"col-md-5 text-center\">" +
+											
+													"<div class=\row\">" +
+														"<div class=\"col-md-12 oriDestFont\">" +
+															"<span>" + vuelosIda[i].aeropuertoOrigen.nombreAeropuerto + "</span>" +
+														"</div>" +
+													"</div>" +
+											
+													"<div class=\row\">" +
+														"<div class=\"col-md-12 oriDestFont\">" +
+															"<i class=\"fa fa-long-arrow-right anchoFlecha\" aria-hidden=\"true\"></i>" +
+														"</div>" +
+													"</div>" +
+											
+													"<div class=\row\">" +
+														"<div class=\"col-md-12 oriDestFont\">" +
+															"<span>" + vuelosIda[i].aeropuertoDestino.nombreAeropuerto + "</span>" +
+														"</div>" +
+													"</div>" +
+											
+													"<div class=\row\">" +
+														"<div class=\"col-md-12\">" +
+															"<span><strong>Duración: </strong></span><span>" + vuelosIda[i].duracionVuelo + " mins</span>" +
+														"</div>" +
+													"</div>" +
+													
+													"<hr>" +
+													
+													"<div class=\row\">" +
+														"<div class=\"col-md-12 oriDestFont\">" +
+															"<span>" + dataV[j].aeropuertoDestino.nombreAeropuerto + "</span>" +
+														"</div>" +
+													"</div>" +
+										
+													"<div class=\row\">" +
+														"<div class=\"col-md-12 oriDestFont\">" +
+															"<i class=\"fa fa-long-arrow-left anchoFlecha\" aria-hidden=\"true\"></i>" +
+														"</div>" +
+													"</div>" +
+										
+													"<div class=\row\">" +
+														"<div class=\"col-md-12 oriDestFont\">" +
+															"<span>" + dataV[j].aeropuertoOrigen.nombreAeropuerto + "</span>" +
+														"</div>" +
+													"</div>" +
+										
+													"<div class=\row\">" +
+														"<div class=\"col-md-12\">" +
+															"<span><strong>Duración: </strong></span><span>" + dataV[j].duracionVuelo + " mins</span>" +
+														"</div>" +
+													"</div>" +
+										
+												"</div>" +
+
+												"<div class=\"col-md-3 text-center\">" +
+											
+													"<div class=\"row\">" +
+														"<div class=\"col-md-12 text-center\">" +
+															"<span><strong>Precio:</strong></span>" +
+														"</div>" +
+													"</div><br>" +
+													
+													"<div class=\"row\">" +
+														"<div class=\"col-md-12 text-right\">" +
+															"<span class=\"largeFont text-right colorPrecio\">" + vuelosIda[i].precioVuelo + " €</span>" +
+														"</div>" +
+													"</div><br>" +	
+													
+													"<hr>" +
+													
+													"<div class=\"row\">" +
+														"<div class=\"col-md-12 text-center\">" +
+															"<span><strong>Precio:</strong></span>" +
+														"</div>" +
+													"</div><br>" +
+												
+													"<div class=\"row\">" +
+														"<div class=\"col-md-12 text-right\">" +
+															"<span class=\"largeFont text-right colorPrecio\">" + dataV[j].precioVuelo + " €</span>" +
+														"</div>" +
+													"</div>" +	
+													
+												"</div>" +
+												
+											"</div>" +
+											
+									"</div>").appendTo('#bodyModal');
 								}
 							}
 						}
-						$("</tbody></table>").appendTo("#myTableIyV");
 					}).fail(function() {
 						$("<h4>" + "No se han encontrado vuelos de vuelta disponibles para los datos introducidos." + "</h4>").appendTo('#bodyModal');
 					});

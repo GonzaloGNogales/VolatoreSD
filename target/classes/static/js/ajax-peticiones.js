@@ -46,8 +46,8 @@ $(document).ready(function() {
 					$("#dialogModal").addClass("contentDialogHeight");
 					
 					for (var i = 0; i < data.length; i++) {
-						$("<div id=\"cont\" class=\"container-fluid\">" +
-							"<div class=\"row rounded border border-dark paddedCustom\">" + 
+						$("<div id=\"cont\" class=\"container-fluid rounded\">" +
+							"<div class=\"row rounded paddedCustom\">" + 
 							
 								"<div class=\"col-md-4 text-left\">" +
 								
@@ -178,8 +178,8 @@ $(document).ready(function() {
 										var precioTotal = vuelosIda[i].precioVuelo + dataV[j].precioVuelo;
 									}
 									
-									$("<div id=\"cont\" class=\"container-fluid\">" +
-											"<div class=\"row rounded border border-dark paddedCustom\">" + 
+									$("<div id=\"cont\" class=\"container-fluid rounded\">" +
+											"<div class=\"row rounded paddedCustom\">" + 
 											
 												"<div class=\"col-md-4 text-left\">" +
 											
@@ -209,8 +209,8 @@ $(document).ready(function() {
 														"</div>" +
 													"</div>" +
 													
-													"<hr>" +
-													
+													"<hr/>" +
+		
 													"<div class=\row\">" +
 														"<div class=\"col-md-12\">" +
 															"<span><strong>Código: </strong>" + dataV[j].codigoVuelo + "</span>" +
@@ -264,9 +264,9 @@ $(document).ready(function() {
 															"<span><strong>Duración: </strong></span><span>" + vuelosIda[i].duracionVuelo + " mins</span>" +
 														"</div>" +
 													"</div>" +
-													
-													"<hr>" +
-													
+		
+													"<hr/>" +
+					
 													"<div class=\row\">" +
 														"<div class=\"col-md-12 oriDestFont\">" +
 															"<span>" + dataV[j].aeropuertoDestino.nombreAeropuerto + "</span>" +
@@ -305,9 +305,9 @@ $(document).ready(function() {
 														"<div class=\"col-md-12 text-right\">" +
 															"<span class=\"largeFont text-right colorPrecio\">" + vuelosIda[i].precioVuelo + " €</span>" +
 														"</div>" +
-													"</div><br>" +	
+													"</div>" +	
 													
-													"<hr>" +
+													"<hr class=\"hrMT\"/>" +
 													
 													"<div class=\"row\">" +
 														"<div class=\"col-md-12 text-center\">" +

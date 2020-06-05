@@ -33,6 +33,7 @@ $(document).ready(function() {
 		$("#bodyModal").removeClass("bodyScroll");
 		$("#contentModal").removeClass("contentDialogHeight");
 		$("#dialogModal").removeClass("contentDialogHeight");
+		$("#dialogModal").width(1000);
 		
 		if($('#botonI').is(':checked')) {
 			// Se revisan los botones de solo ida o de ida y vuelta para realizar las peticiones al servidor
@@ -162,6 +163,7 @@ $(document).ready(function() {
 						$("#bodyModal").addClass("bodyScroll");
 						$("#contentModal").addClass("contentDialogHeight");
 						$("#dialogModal").addClass("contentDialogHeight");
+						$("#dialogModal").width(1200);
 
 						for (var i = 0; i < vuelosIda.length; i++) {
 							for (var j = 0; j < dataV.length; j++) {
@@ -171,17 +173,22 @@ $(document).ready(function() {
 								// Se comprueba que las horas no sean incoherentes y que de tiempo a coger el vuelo de vuelta
 								if (horaIda < horaVuelta) {
 									if (vuelosIda[i].empresa.nombreEmpresa.localeCompare(dataV[j].empresa.nombreEmpresa) == 0) {
-										var precioTotal = "<span class=\"text-danger\">" + "¡-20%!" + "</span><br/>" + 
-										((vuelosIda[i].precioVuelo + dataV[j].precioVuelo) - ((vuelosIda[i].precioVuelo + dataV[j].precioVuelo) * 0.20));
+										var labelTotal = "<span class=\"largeFont3\"><strong>Total(" + 
+										"<span class=\"text-danger\">" + "-20%" + "</span>" + "):</strong></span>";
+										var precioTotal = "<span class=\"largeFont2 text-right colorPrecio\">" + 
+										((vuelosIda[i].precioVuelo + dataV[j].precioVuelo) - ((vuelosIda[i].precioVuelo + dataV[j].precioVuelo) * 0.20)) + 
+										" €</span>";									
 									}
 									else {
-										var precioTotal = vuelosIda[i].precioVuelo + dataV[j].precioVuelo;
+										var labelTotal = "<span class=\"largeFont3\"><strong>Total:</strong></span>";
+										var precioTotal = "<span class=\"largeFont2 text-right colorPrecio\">" + 
+										(vuelosIda[i].precioVuelo + dataV[j].precioVuelo) + " €</span>";
 									}
 									
 									$("<div id=\"cont\" class=\"container-fluid rounded\">" +
 											"<div class=\"row rounded paddedCustom\">" + 
 											
-												"<div class=\"col-md-4 text-left\">" +
+												"<div class=\"col-md-3 text-left\">" +
 											
 													"<div class=\row\">" +
 														"<div class=\"col-md-12\">" +
@@ -239,7 +246,7 @@ $(document).ready(function() {
 					
 												"</div>" +
 
-												"<div class=\"col-md-5 text-center\">" +
+												"<div class=\"col-md-4 text-center\">" +
 											
 													"<div class=\row\">" +
 														"<div class=\"col-md-12 oriDestFont\">" +
@@ -293,17 +300,17 @@ $(document).ready(function() {
 										
 												"</div>" +
 
-												"<div class=\"col-md-3 text-center\">" +
+												"<div class=\"col-md-2 text-center\">" +
 											
 													"<div class=\"row\">" +
 														"<div class=\"col-md-12 text-center\">" +
-															"<span><strong>Precio:</strong></span>" +
+															"<span><strong>Precio Ida:</strong></span>" +
 														"</div>" +
 													"</div><br>" +
 													
 													"<div class=\"row\">" +
 														"<div class=\"col-md-12 text-right\">" +
-															"<span class=\"largeFont text-right colorPrecio\">" + vuelosIda[i].precioVuelo + " €</span>" +
+															"<span class=\"largeFont3 text-right\">" + vuelosIda[i].precioVuelo + " €</span>" +
 														"</div>" +
 													"</div>" +	
 													
@@ -311,16 +318,34 @@ $(document).ready(function() {
 													
 													"<div class=\"row\">" +
 														"<div class=\"col-md-12 text-center\">" +
-															"<span><strong>Precio:</strong></span>" +
+															"<span><strong>Precio Vuelta:</strong></span>" +
 														"</div>" +
 													"</div><br>" +
 												
 													"<div class=\"row\">" +
 														"<div class=\"col-md-12 text-right\">" +
-															"<span class=\"largeFont text-right colorPrecio\">" + dataV[j].precioVuelo + " €</span>" +
+															"<span class=\"largeFont3 text-right\">" + dataV[j].precioVuelo + " €</span>" +
 														"</div>" +
 													"</div>" +	
 													
+												"</div>" +
+												
+												"<div class=\"col-md-3 text-center\">" +
+													
+													"<br><br>" +
+													
+													"<div class=\"row\">" +
+														"<div class=\"col-md-12 text-center\">" +
+															labelTotal +
+														"</div>" +
+													"</div><br>" +
+													
+													"<div class=\"row\">" +
+														"<div class=\"col-md-12 text-right\">" +
+															precioTotal +
+														"</div>" +
+													"</div>" +	
+												
 												"</div>" +
 												
 											"</div>" +

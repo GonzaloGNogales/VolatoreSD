@@ -10559,8 +10559,16 @@ margin-right
 
 @media ( min-width : 992px) {
 	.modal-lg {
-		max-width: 1000px;
+		max-width: 1500px;
 	}
+}
+
+.largeFont2 {
+	font-size: 40px;
+}
+
+.largeFont3 {
+	font-size: 25px;
 }
 
 .tooltip {

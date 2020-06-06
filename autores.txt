@@ -1,0 +1,43 @@
+ Apellidos, Nombre	     DNI
+
+Gómez Nogales, Gonzalo  - 49842513H
+Luna Piñel, Miguel      - 53990180A
+
+Participación:
+
+ENTIDADES:
+- AEROPUERTO: Gonzalo Gómez y Miguel Luna.
+- EMPRESA: Gonzalo Gómez y Miguel Luna.
+- VUELO: Gonzalo Gómez y Miguel Luna.
+
+REPOSITORIOS:
+- AEROPUERTO: Gonzalo Gómez y Miguel Luna.
+- EMPRESA: Gonzalo Gómez y Miguel Luna.
+- VUELO: Gonzalo Gómez y Miguel Luna.
+
+CONTROLADORES (DATOS DE PRUEBA Y MAPEO DEL INICIO):
+- HOMECONTROLLER: Gonzalo Gómez y Miguel Luna.
+
+CONTROLADORES REST:
+- AEROPUERTOS: Gonzalo Gómez y Miguel Luna.
+- EMPRESAS: Gonzalo Gómez y Miguel Luna.
+- VUELOS: Gonzalo Gómez.
+
+JAVASCRIPT:
+- ANIMACIONES: Gonzalo Gómez.
+- INICIO(DATEPICKER Y BOTONES): Gonzalo Gómez y Miguel Luna.
+- AJAX-PETICIONES:
+    - AUTOCOMPLETE: Miguel Luna.
+    - BUSCAR VUELOS: Gonzalo Gómez.
+    - MOSTRAR EMPRESA: Gonzalo Gómez y Miguel Luna.
+
+VISTA HTML (SOLO 1 POR SER SPA):
+- INDEX: 
+    - PÁGINA PRINCIPAL: Gonzalo Gómez y Miguel Luna.
+    - VENTANA MODAL VUELOS: Gonzalo Gómez.
+    - VENTANA MODAL EMPRESAS: Miguel Luna.
+
+CSS:
+- IMPLEMENTACIÓN DEL BOOTSTRAP: Gonzalo Gómez.
+- CLASES AÑADIDAS EN EL STYLE CSS DE LA PLANTILLA BOOTSRAP: Gonzalo Gómez.
+

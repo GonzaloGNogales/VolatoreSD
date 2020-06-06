@@ -39,7 +39,7 @@ $(document).ready(function() {
 			// Se revisan los botones de solo ida o de ida y vuelta para realizar las peticiones al servidor
 			if (origen.length != 0 && destino.length != 0 && fechaIda.length != 0) {
 				$.ajax({
-					url : "http://localhost:8080/vuelos/" + origen + "/" + destino + "/" + fechaIda
+					url : "http://localhost:8080/vuelos/" + encodeURI(origen) + "/" + encodeURI(destino) + "/" + encodeURI(fechaIda)
 				}).done(function(data) {
 					// Hacer que la ventana emergente sea scrolleable
 					$("#bodyModal").addClass("bodyScroll");
@@ -149,7 +149,7 @@ $(document).ready(function() {
 			else if (origen.length != 0 && destino.length != 0 && fechaIda.length != 0 && fechaVuelta.length != 0) {
 				// Se realizan 2 peticiones asíncronas al servidor para recoger todos los vuelos de ida y vuelta
 				$.ajax({
-					url : "http://localhost:8080/vuelos/" + origen + "/" + destino + "/" + fechaIda
+					url : "http://localhost:8080/vuelos/" + encodeURI(origen) + "/" + encodeURI(destino) + "/" + encodeURI(fechaIda)
 				}).done(function(dataI) {
 					for (var i = 0; i < dataI.length; i++) {
 						vuelosIda[i] = dataI[i];
@@ -157,7 +157,7 @@ $(document).ready(function() {
 					
 					// Segunda petición ajax anidada dentro de la primera al obtener los datos correctamente
 					$.ajax({
-						url : "http://localhost:8080/vuelos/" + destino + "/" + origen + "/" + fechaVuelta
+						url : "http://localhost:8080/vuelos/" + encodeURI(destino) + "/" + encodeURI(origen) + "/" + encodeURI(fechaVuelta)
 					}).done(function(dataV) {
 						// Hacer que la ventana emergente sea scrolleable
 						$("#bodyModal").addClass("bodyScroll");
@@ -373,7 +373,7 @@ function mostrarEmpresa(nombreEmpresa) {
 	
 	// Petición ajax de tipo GET para obtener todos los datos de una empresa concreta del servidor
 	$.ajax({
-		url : "http://localhost:8080/empresas/" + nombre
+		url : "http://localhost:8080/empresas/" + encodeURI(nombre)
 	}).done(function(empresa) {
 		$("<h5>" + "<strong>Código: </strong>" + empresa.codigoEmpresa + "<br/>" + 
 				"<strong>Nombre: </strong>" + empresa.nombreEmpresa + "<br/>" +

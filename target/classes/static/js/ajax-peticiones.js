@@ -163,7 +163,7 @@ $(document).ready(function() {
 						$("#bodyModal").addClass("bodyScroll");
 						$("#contentModal").addClass("contentDialogHeight");
 						$("#dialogModal").addClass("contentDialogHeight");
-						$("#dialogModal").width(1200);
+						$("#dialogModal").width(1300);
 
 						for (var i = 0; i < vuelosIda.length; i++) {
 							for (var j = 0; j < dataV.length; j++) {

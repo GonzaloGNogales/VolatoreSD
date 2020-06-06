@@ -17,6 +17,10 @@
 	display: none;
 }
 
+.fontDate {
+	font-size: 15px;
+}
+
 .paddedCustom {
 	padding-top: 15px;
 	padding-bottom: 15px;

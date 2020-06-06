@@ -4,6 +4,7 @@ $(document).ready(function() {
 	var fechaIda = fecha1.toLocaleDateString();
 	var fechaVuelta = fecha2.toLocaleDateString();
 	
+	// Se inicializan los campos de fecha con el dia de hoy y 14 dias despues para la vuelta
 	$("#datepickerIda").val(fechaIda);
 	$("#datepickerVuelta").val(fechaVuelta);
 	
@@ -16,7 +17,7 @@ $(document).ready(function() {
 		$("#labelvuelta").fadeIn(1500);
 	}
 	
-	// Configuración del datepicker de Material-Kit
+	// Configuración del datepicker de Material-Kit utilizado
 	$("#datepickerIda").datetimepicker({
 		format : 'DD/MM/YYYY',
 		icons : {

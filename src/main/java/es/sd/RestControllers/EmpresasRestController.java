@@ -23,9 +23,9 @@ public class EmpresasRestController {
 		Empresa empresa = repEmpresas.findByNombreEmpresa(nombreEmpresa);
 
 		if (empresa != null)
-			return new ResponseEntity<>(empresa, HttpStatus.OK);
+			return new ResponseEntity<>(empresa, HttpStatus.OK); // Devuelve el código 200 OK
 		else
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND); // Si no se encuentra la empresa devuelve 404 Not Found
 	}
 
 }

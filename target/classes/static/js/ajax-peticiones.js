@@ -4,7 +4,7 @@ $(document).ready(function() {
 	var vuelosIda = [];
 	var vuelosVuelta = [];
 
-	// Petición ajax de tipo get para obtener todos los nombres de aeropuertos del servidor y se establecen en el autocompletado
+	// Petición ajax de tipo GET para obtener todos los nombres de aeropuertos del servidor y se establecen en el autocompletado
 	$.ajax({
 		url : "http://localhost:8080/aeropuertos/"
 	}).done(function(data) {
@@ -27,7 +27,7 @@ $(document).ready(function() {
 		var origen = $("#aeropuertoOrigen").val();
 		var destino = $("#aeropuertoDestino").val();
 		var fechaIdaRaw = $("#datepickerIda").val();
-		var fechaIda = fechaIdaRaw.split("/").reverse().join("-");
+		var fechaIda = fechaIdaRaw.split("/").reverse().join("-"); // DD/MM/YYYY -> YYYY-MM-DD
 		
 		// Resetear la ventana emergente sea scrolleable
 		$("#bodyModal").removeClass("bodyScroll");
@@ -371,7 +371,7 @@ function mostrarEmpresa(nombreEmpresa) {
 	$("#bodyEmpresa").empty();
 	var nombre = $(nombreEmpresa).text();
 	
-	// Petición ajax de tipo get para obtener todos los datos de una empresa concreta del servidor
+	// Petición ajax de tipo GET para obtener todos los datos de una empresa concreta del servidor
 	$.ajax({
 		url : "http://localhost:8080/empresas/" + nombre
 	}).done(function(empresa) {

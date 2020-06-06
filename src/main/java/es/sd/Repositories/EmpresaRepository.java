@@ -5,7 +5,7 @@ import es.sd.Entities.Empresa;
 
 public interface EmpresaRepository extends JpaRepository<Empresa, Long> {
 
-	// Métodos simples de consulta de la base de datos
+	// Método para encontrar una empresa en la BBDD dado su nombre para mostrar su información al usuario.
 
 	Empresa findByNombreEmpresa(String nombreEmpresa);
 

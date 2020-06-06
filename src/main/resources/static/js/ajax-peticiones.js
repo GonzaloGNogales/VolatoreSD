@@ -301,7 +301,7 @@ $(document).ready(function() {
 												"</div>" +
 
 												"<div class=\"col-md-2 text-center\">" +
-											
+												
 													"<div class=\"row\">" +
 														"<div class=\"col-md-12 text-center\">" +
 															"<span><strong>Precio Ida:</strong></span>" +
@@ -312,9 +312,9 @@ $(document).ready(function() {
 														"<div class=\"col-md-12 text-right\">" +
 															"<span class=\"largeFont3 text-right\">" + vuelosIda[i].precioVuelo + " €</span>" +
 														"</div>" +
-													"</div>" +	
+													"</div><br>" +	
 													
-													"<hr class=\"hrMT\"/>" +
+													"<hr/>" +
 													
 													"<div class=\"row\">" +
 														"<div class=\"col-md-12 text-center\">" +
@@ -338,7 +338,7 @@ $(document).ready(function() {
 														"<div class=\"col-md-12 text-center\">" +
 															labelTotal +
 														"</div>" +
-													"</div><br>" +
+													"</div><br><br>" +
 													
 													"<div class=\"row\">" +
 														"<div class=\"col-md-12 text-right\">" +

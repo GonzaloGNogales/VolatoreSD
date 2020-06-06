@@ -21,6 +21,27 @@
 	font-size: 15px;
 }
 
+.centerPrice {
+	display: flex;
+	flex-direction: column;
+  	align-items: flex-start;
+  	justify-content: center;
+}
+
+.centerPrice selected1 {
+	align-self: center;
+}
+
+.centerPrice selected2 {
+	align-self: flex-end;
+}
+
+br {
+	display: block; /* makes it have a width */
+    content: ""; /* clears default height */
+    margin-top: 22.5px; /* change this to whatever height you want it */
+}
+
 .paddedCustom {
 	padding-top: 15px;
 	padding-bottom: 15px;

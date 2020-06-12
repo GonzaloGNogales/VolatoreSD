@@ -21,6 +21,15 @@
 	font-size: 15px;
 }
 
+.colorPrecio2 {
+	color: #9c27b0;
+}
+
+.fuenteAuemntada {
+	font-size: 20px;
+	padding-bottom: 5px;
+}
+
 .centerPrice {
 	display: flex;
 	flex-direction: column;
